@@ -1,1 +1,0 @@
-//TODO: Create a task model for the to-do app
