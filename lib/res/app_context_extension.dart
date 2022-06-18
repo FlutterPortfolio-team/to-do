@@ -1,7 +1,6 @@
-//TODO: This is option you can delete the file or you use it with the resources.dart file as thr repo
+import 'package:flutter/material.dart';
+import 'package:to_do/res/resources.dart';
 
-//* Here is an example 
-
-// extension AppContext on BuildContext {
-//   Resources get resources => Resources.of(this);
-// }
+extension AppContext on BuildContext {
+  Resources get resources => Resources.of(this);
+}

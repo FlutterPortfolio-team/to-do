@@ -1,18 +1,23 @@
-//TODO: Define the base colors here
+import 'package:flutter/material.dart';
 
-//* Here is an example
-
-// abstract class BaseColors {
-//   //theme color
-//   MaterialColor get colorPrimary;
-//   MaterialColor get colorAccent;
-//   //text color
-//   Color get colorPrimaryText;
-//   Color get colorSecondaryText;
-//   //chips color
-//   Color get catChipColor;
-//   Color get castChipColor;
-//   //extra color
-//   Color get colorWhite;
-//   Color get colorBlack;
-// }
+abstract class BaseColors {
+  //theme color
+  Color get shadowColor;
+  Color get colorAccent;
+  //text color
+  Color get colorPrimaryText;
+  Color get colorSecondaryText;
+  Color get colorRedTex;
+  //task and category color
+  Color get taskPriorityColor;
+  List<Color> get categoryColor;
+  List<Color> get categoryIconColor;
+  // button color
+  Color get buttonGrey;
+  Color get buttonBlue;
+  //extra color
+  Color get blueAppColor;
+  Color get colorWhite;
+  Color get colorBlack;
+  Color get colorRed;
+}
