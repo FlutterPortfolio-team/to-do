@@ -113,7 +113,7 @@ class ChooseTimeWidget extends StatelessWidget {
       unSelectTextStyle: const TextStyle(fontSize: 20, color: Colors.grey),
     );
     return PopUpContainer(
-        setTodefault: false,
+        setTodefault: true,
         height: 270,
         title: 'Choose Time',
         button2Title: 'Save',

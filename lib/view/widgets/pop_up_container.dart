@@ -32,78 +32,71 @@ class PopUpContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double size = 350.0;
-    return Column(
-      crossAxisAlignment:
-          setTodefault ? CrossAxisAlignment.stretch : CrossAxisAlignment.center,
-      children: [
-        Container(
-          height: height ?? size,
-          width: width ?? size,
-          padding: const EdgeInsets.only(bottom: 8.0),
-          decoration: BoxDecoration(
-            color: context.resources.color.buttonBlue,
-            borderRadius: BorderRadius.only(
-              topLeft: const Radius.circular(10.0),
-              topRight: const Radius.circular(10.0),
-              bottomLeft: setTodefault
-                  ? const Radius.circular(0.0)
-                  : const Radius.circular(10.0),
-              bottomRight: setTodefault
-                  ? const Radius.circular(0.0)
-                  : const Radius.circular(10.0),
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: height == null ? (size - 100) : (height! - 100),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Container(
+      height: height ?? size,
+      width: width ?? size,
+      padding: const EdgeInsets.only(bottom: 8.0),
+      decoration: BoxDecoration(
+        color: context.resources.color.buttonBlue,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(10.0),
+          topRight: const Radius.circular(10.0),
+          bottomLeft: setTodefault
+              ? const Radius.circular(0.0)
+              : const Radius.circular(10.0),
+          bottomRight: setTodefault
+              ? const Radius.circular(0.0)
+              : const Radius.circular(10.0),
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            height: height == null ? (size - 100) : (height! - 100),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          title,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: context.resources.color.colorWhite,
-                              fontSize: 18),
-                        ),
-                        showDivider
-                            ? const Padding(
-                                padding:
-                                    EdgeInsets.only(left: 10.0, right: 10.0),
-                                child: Divider(
-                                  color: Colors.grey,
-                                ),
-                              )
-                            : const Text(''),
-                      ],
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: context.resources.color.colorWhite,
+                          fontSize: 18),
                     ),
-                    body,
+                    showDivider
+                        ? const Padding(
+                            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Divider(
+                              color: Colors.grey,
+                            ),
+                          )
+                        : const Text(''),
                   ],
                 ),
-              ),
-              trailingWidget ??
-                  Row(
-                    children: [
-                      AppButton(
-                        text: button1Title ?? 'Cancel',
-                        useSecondColor: false,
-                        onPressed: button1Pressed,
-                      ),
-                      AppButton(
-                        text: button2Title ?? 'Edit',
-                        useSecondColor: true,
-                        onPressed: button2Pressed,
-                      )
-                    ],
-                  )
-            ],
+                body,
+              ],
+            ),
           ),
-        ),
-      ],
+          trailingWidget ??
+              Row(
+                children: [
+                  AppButton(
+                    text: button1Title ?? 'Cancel',
+                    useSecondColor: false,
+                    onPressed: button1Pressed,
+                  ),
+                  AppButton(
+                    text: button2Title ?? 'Edit',
+                    useSecondColor: true,
+                    onPressed: button2Pressed,
+                  )
+                ],
+              )
+        ],
+      ),
     );
   }
 }

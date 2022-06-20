@@ -6,6 +6,7 @@ import 'package:to_do/view/widgets/add_task_widget.dart';
 import 'package:to_do/view/widgets/app_bottom_sheet.dart';
 import 'package:to_do/view/widgets/calender.dart';
 import 'package:to_do/view/widgets/choose_time_widget.dart';
+import 'package:to_do/view/widgets/task_priority.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,16 +55,16 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => showModalBottomSheet(
             context: context, builder: (context) => const AddTaskBottomSheet()),
       ),
-      body: Center(
-        child: AddTaskWidget(
-          button1Pressed: () => displayDialog(
-              context,
-              ChooseTimeWidget(
-                onHourValueChanged: (v) => v,
-                onMinutesValueChanged: (v) => v,
-                onTimeValueChanged: (v) => v,
-              )),
-        ),
+      body: const Center(
+        child: TaskPriority(
+            // button1Pressed: () => displayDialog(
+            //     context,
+            //     ChooseTimeWidget(
+            //       onHourValueChanged: (v) => v,
+            //       onMinutesValueChanged: (v) => v,
+            //       onTimeValueChanged: (v) => v,
+            //     )),
+            ),
       ),
     );
   }

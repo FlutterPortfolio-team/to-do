@@ -7,12 +7,13 @@ class AddTaskBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height / 2.5;
     return Container(
       color: const Color(0xFF757575),
       child: Container(
         // margin: const EdgeInsets.symmetric(vertical: 2.0),
         // padding: const EdgeInsets.all(30.0),
-        height: MediaQuery.of(context).size.height / 1.8,
+        height: height,
         decoration: const BoxDecoration(
           // color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -25,18 +26,40 @@ class AddTaskBottomSheet extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             PopUpContainer(
-                setTodefault: true,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 1.8,
-                title: 'Add Task',
-                body: Column(
+              setTodefault: true,
+              width: MediaQuery.of(context).size.width,
+              height: height,
+              title: 'Add Task',
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  AppTextField(labelText: 'Add Task'),
+                  SizedBox(height: 50),
+                  AppTextField(labelText: 'Description'),
+                ],
+              ),
+              showDivider: false,
+              trailingWidget: Padding(
+                padding: const EdgeInsets.only(right: 50.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    AppTextField(labelText: 'Add Task'),
-                    AppTextField(labelText: 'Add Duration'),
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset('assets/Images/timer.png'),
+                          Image.asset('assets/Images/tag.png'),
+                          Image.asset('assets/Images/flag.png'),
+                        ],
+                      ),
+                    ),
+                    Image.asset('assets/Images/send.png'),
                   ],
                 ),
-                showDivider: false),
+              ),
+            ),
           ],
         ),
       ),
