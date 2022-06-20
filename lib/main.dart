@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/res/app_context_extension.dart';
+import 'package:to_do/utils/display_dialog.dart';
+import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
 import 'package:to_do/view/widgets/add_task_widget.dart';
+import 'package:to_do/view/widgets/app_bottom_sheet.dart';
+import 'package:to_do/view/widgets/calender.dart';
+import 'package:to_do/view/widgets/choose_time_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('TO-DO'),
       ),
-      body: const Center(child: AddTaskWidget()),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => showModalBottomSheet(
+            context: context, builder: (context) => const AddTaskBottomSheet()),
+      ),
+      body: Center(
+        child: AddTaskWidget(
+          button1Pressed: () => displayDialog(
+              context,
+              ChooseTimeWidget(
+                onHourValueChanged: (v) => v,
+                onMinutesValueChanged: (v) => v,
+                onTimeValueChanged: (v) => v,
+              )),
+        ),
+      ),
     );
   }
 }

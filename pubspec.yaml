@@ -37,6 +37,7 @@ dependencies:
   table_calendar: ^3.0.6
   syncfusion_flutter_calendar: ^20.1.60
   flutter_calendar_carousel: ^2.2.0
+  wheel_chooser: ^1.0.0
 
 dev_dependencies:
   flutter_test:
