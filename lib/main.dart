@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => showModalBottomSheet(
             context: context, builder: (context) => const AddTaskBottomSheet()),
       ),
-      body: const Center(
+      body: Center(
         child: TaskPriority(
             // button1Pressed: () => displayDialog(
             //     context,
