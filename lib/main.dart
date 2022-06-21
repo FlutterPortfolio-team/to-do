@@ -7,6 +7,12 @@ import 'package:to_do/view/widgets/app_bottom_sheet.dart';
 import 'package:to_do/view/widgets/calender.dart';
 import 'package:to_do/view/widgets/choose_time_widget.dart';
 import 'package:to_do/view/widgets/task_priority.dart';
+import 'package:flutter/services.dart';
+import 'package:to_do/helper%20/routes.dart';
+import 'package:to_do/view/profile/profile_page.dart';
+// import 'package:google_fonts/google_fonts.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +24,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+         SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Color.fromARGB(255, 217, 212, 212)));
     return MaterialApp(
+      
       title: 'Flutter Demo',
+      onGenerateRoute: Routes.generateRoute,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -32,7 +43,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const ProfileScreen(),
     );
   }
 }
