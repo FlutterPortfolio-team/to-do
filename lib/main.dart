@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/view/home/home_screen.dart';
+
 import 'package:to_do/res/app_context_extension.dart';
 import 'package:to_do/utils/display_dialog.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
@@ -12,8 +14,6 @@ import 'package:to_do/helper%20/routes.dart';
 import 'package:to_do/view/profile/profile_page.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
-
-
 void main() {
   runApp(const MyApp());
 }
@@ -21,7 +21,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
          SystemChrome.setSystemUIOverlayStyle(
@@ -30,17 +29,9 @@ class MyApp extends StatelessWidget {
       
       title: 'Flutter Demo',
       onGenerateRoute: Routes.generateRoute,
+
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const ProfileScreen(),
