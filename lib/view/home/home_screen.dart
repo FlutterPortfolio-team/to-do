@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -37,20 +35,21 @@ class _HomeScreenState extends State<HomeScreen> {
               height: double.infinity,
               child: SingleChildScrollView(
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 60),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(child: Image.asset(boy)),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'What do you want to do today?',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    SizedBox(height: 10),
-                    Text('Tap + to add your tasks')
-                  ],
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Container(child: Image.asset(boy)),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'What do you want to do today?',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      SizedBox(height: 10),
+                      Text('Tap + to add your tasks')
+                    ],
+                  ),
                 ),
               ),
             )
