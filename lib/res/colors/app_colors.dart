@@ -100,7 +100,7 @@ class AppColors implements BaseColors {
   Color get buttonGrey => const Color(0xFFCACACA);
 
   @override
-  Color get buttonBlue => blueAppColor;
+  Color get buttonBlue => const Color(0xFF0E2045);
 
   @override
   List<Color> get categoryColor => _categoryColor;
