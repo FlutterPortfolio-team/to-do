@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:to_do/view/widgets/pop_up_container.dart';
 import 'package:to_do/view/widgets/small_container.dart';
 
@@ -13,7 +10,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text(
+          const Text(
             '1',
             style: TextStyle(color: Colors.white),
           ),
@@ -25,7 +22,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('2', style: TextStyle(color: Colors.white)),
+          const Text('2', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -34,7 +31,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('3', style: TextStyle(color: Colors.white)),
+          const Text('3', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -43,7 +40,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('4', style: TextStyle(color: Colors.white)),
+          const Text('4', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -52,7 +49,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('5', style: TextStyle(color: Colors.white)),
+          const Text('5', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -61,7 +58,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('6', style: TextStyle(color: Colors.white)),
+          const Text('6', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -70,7 +67,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('7', style: TextStyle(color: Colors.white)),
+          const Text('7', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -79,7 +76,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('8', style: TextStyle(color: Colors.white)),
+          const Text('8', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -88,7 +85,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('9', style: TextStyle(color: Colors.white)),
+          const Text('9', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),
@@ -97,7 +94,7 @@ class TaskPriority extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset('assets/Images/flag.png'),
-          Text('10', style: TextStyle(color: Colors.white)),
+          const Text('10', style: TextStyle(color: Colors.white)),
         ],
       ),
     ),

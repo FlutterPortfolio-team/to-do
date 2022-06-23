@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do/view/home/home_screen.dart';
 
-import 'package:to_do/res/app_context_extension.dart';
-import 'package:to_do/utils/display_dialog.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
-import 'package:to_do/view/widgets/add_task_widget.dart';
-import 'package:to_do/view/widgets/app_bottom_sheet.dart';
-import 'package:to_do/view/widgets/calender.dart';
-import 'package:to_do/view/widgets/choose_time_widget.dart';
 import 'package:to_do/view/widgets/task_priority.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do/helper%20/routes.dart';
@@ -24,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
          SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Color.fromARGB(255, 217, 212, 212)));
+        const SystemUiOverlayStyle(statusBarColor: Color.fromARGB(255, 217, 212, 212)));
     return MaterialApp(
       
       title: 'Flutter Demo',

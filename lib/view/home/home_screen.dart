@@ -31,23 +31,23 @@ class _HomeScreenState extends State<HomeScreen> {
         drawer: const Drawer(),
         body: Stack(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: double.infinity,
               child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
                 child: Center(
                   child: Column(
                     children: <Widget>[
                       Container(child: Image.asset(boy)),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         'What do you want to do today?',
                         style: TextStyle(fontSize: 20),
                       ),
-                      SizedBox(height: 10),
-                      Text('Tap + to add your tasks')
+                      const SizedBox(height: 10),
+                      const Text('Tap + to add your tasks')
                     ],
                   ),
                 ),
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: Colors.yellow,
-          child: Icon(
+          child: const Icon(
             Icons.add,
             color: Colors.black,
           ),
@@ -72,28 +72,28 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
                   color: Colors.white,
                 ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.calendar_month,
                   color: Colors.white,
                 ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.access_alarm,
                   color: Colors.white,
                 ),
               ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.person,
                     color: Colors.white,
                   ))
