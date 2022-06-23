@@ -9,7 +9,7 @@ static const SettingRoute = 'settingScreen';
   static Route<dynamic>? generateRoute (RouteSettings settings) {
     switch (settings.name) {
       case SettingRoute:
-        return MaterialPageRoute(builder: ((context) => SettingScreen()));
+        return MaterialPageRoute(builder: ((context) => const SettingScreen()));
       default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(
