@@ -74,7 +74,7 @@ List<Widget> chooseCategories = <Widget>[
       SmallContainer(
         body: Image.asset('assets/Images/social.png'),
       ),
-      const Text('Social', style: const TextStyle(color: Colors.white)),
+      const Text('Social', style: TextStyle(color: Colors.white)),
     ],
   ),
   Column(
@@ -82,7 +82,7 @@ List<Widget> chooseCategories = <Widget>[
       SmallContainer(
         body: Image.asset('assets/Images/music.png'),
       ),
-      const Text('Music', style: const TextStyle(color: Colors.white)),
+      const Text('Music', style: TextStyle(color: Colors.white)),
     ],
   ),
   Column(
@@ -106,7 +106,7 @@ List<Widget> chooseCategories = <Widget>[
       SmallContainer(
         body: Image.asset('assets/Images/home.png'),
       ),
-      const Text('Home', style: const TextStyle(color: Colors.white)),
+      const Text('Home', style: TextStyle(color: Colors.white)),
     ],
   ),
 ];

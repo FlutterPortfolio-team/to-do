@@ -23,7 +23,7 @@ displayAlert(
           child: Opacity(opacity: a1.value, child: widget),
         );
       },
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 200),
       barrierDismissible: true,
       barrierLabel: '',
       context: context,
@@ -55,7 +55,7 @@ displayAlert(
               SizedBox(
                 height: sizer(false, 10, context),
               ),
-              Divider(),
+              const Divider(),
                 SizedBox(
                 height: sizer(false, 16, context),
               ),

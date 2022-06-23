@@ -23,7 +23,7 @@ class SettingScreen extends StatelessWidget {
           onTap: (){
             Navigator.of(context).pop();
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios_new_rounded,
             color: GenColors.kLightBlue,
             ), ),
@@ -40,7 +40,7 @@ class SettingScreen extends StatelessWidget {
                 bottom: 56.0),
               child: Column(
                 children: [
-                    TileTile(title: 'Account'),
+                    const TileTile(title: 'Account'),
                     ProfileTile(
                         tileFunction: () {
                         },

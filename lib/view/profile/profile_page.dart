@@ -21,21 +21,21 @@ class ProfileScreen extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            content: Text('Exit From The App'),
+            content: const Text('Exit From The App'),
             actions: [
               TextButton(
                 onPressed: () {
                   goBack = false;
                   Navigator.pop(context);
                 },
-                child: Text('No'),
+                child: const Text('No'),
               ),
               TextButton(
                 onPressed: () {
                   goBack = true;
                   Navigator.pop(context);
                 },
-                child: Text('Yes'),
+                child: const Text('Yes'),
               ),
             ],
           );
@@ -109,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: sizer(false, 32.0, context),
                     ),
-                    TileTile(title: 'Settings'),
+                    const TileTile(title: 'Settings'),
                     ProfileTile(
                       tileFunction: (){
                           HapticFeedback.lightImpact();
@@ -122,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: sizer(false, 16.0, context),
                     ),
-                    TileTile(title: 'Account'),
+                    const TileTile(title: 'Account'),
                     ProfileTile(
                         tileFunction: () {
                           displayAlert(context: context, title: 'change name account', content: 'martha hays');
@@ -142,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: sizer(false, 16.0, context),
                     ),
-                    TileTile(title: 'Uptodo'),
+                    const TileTile(title: 'Uptodo'),
                     ProfileTile(
                         tileFunction: () {},
                         icon: 'assets/icons/menu.png',
