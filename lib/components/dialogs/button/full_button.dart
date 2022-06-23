@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do/res/colors/general_color.dart';
 
-import '../../../res/size_calculator.dart';
 
 
 class FullButton extends StatefulWidget {
