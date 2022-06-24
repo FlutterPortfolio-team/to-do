@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/res/app_context_extension.dart';
-import 'package:to_do/view/widgets/pop_up_container.dart';
 
 displayDialog(BuildContext context, Widget widget) {
   showGeneralDialog(

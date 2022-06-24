@@ -38,14 +38,14 @@ class _AppBarCalendarState extends State<AppBarCalendar> {
         // selectedDateTime: _currentDate2,
         showIconBehindDayText: true,
 //          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
-        customGridViewPhysics: NeverScrollableScrollPhysics(),
+        customGridViewPhysics: const NeverScrollableScrollPhysics(),
         markedDateShowIcon: true,
         markedDateIconMaxShown: 2,
-        selectedDayTextStyle: TextStyle(
+        selectedDayTextStyle: const TextStyle(
           color: Colors.yellow,
         ),
         selectedDayButtonColor: context.resources.color.blueAppColor,
-        todayTextStyle: TextStyle(
+        todayTextStyle: const TextStyle(
           color: Colors.blue,
         ),
         // markedDateIconBuilder: (event) {
