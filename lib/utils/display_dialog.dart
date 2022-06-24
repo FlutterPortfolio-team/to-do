@@ -5,7 +5,7 @@ displayDialog(BuildContext context, Widget widget) {
   showGeneralDialog(
     context: context,
     barrierDismissible: false,
-    transitionDuration: const Duration(milliseconds: 2000),
+    transitionDuration: const Duration(milliseconds: 200),
     transitionBuilder: (context, animation, secondaryAnimation, child) {
       return Dialog(
         backgroundColor: context.resources.color.buttonBlue,

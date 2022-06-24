@@ -61,7 +61,7 @@ class PopUpContainer extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                       style: TextStyle(
                           color: context.resources.color.colorWhite,
                           fontSize: 18),

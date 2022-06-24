@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/view/home/home_screen.dart';
+import 'package:to_do/view/task/task_screen.dart';
 
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
+import 'package:to_do/view/widgets/display_task_tile.dart';
 import 'package:to_do/view/widgets/task_priority.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do/helper/routes.dart';
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ProfileScreen(),
+      home: const HomeScreen(),
     );
   }
 }
