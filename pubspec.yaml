@@ -38,7 +38,7 @@ dependencies:
   syncfusion_flutter_calendar: ^20.1.60
   flutter_calendar_carousel: ^2.2.0
   wheel_chooser: ^1.0.0
-  dropdown_button2: ^1.6.2
+  # dropdown_button: ^1.6.2
 
 dev_dependencies:
   flutter_test:

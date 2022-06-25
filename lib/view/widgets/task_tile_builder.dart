@@ -71,16 +71,16 @@ class _TaskTileViewState extends State<TaskTileView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: dropDown(
-              context: context,
-              title: widget.taskTypep,
-              categories: categories2,
-              onChanged: onChanged,
-              selectedValue: selectedValue,
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 10.0),
+          //   child: dropDown(
+          //     context: context,
+          //     title: widget.taskTypep,
+          //     categories: categories2,
+          //     onChanged: onChanged,
+          //     selectedValue: selectedValue,
+          //   ),
+          // ),
           const SizedBox(height: 20),
           Expanded(
               child: TaskTileWidget(
