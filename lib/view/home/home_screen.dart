@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,11 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(color: Colors.black),
           ),
           centerTitle: true,
-          actions: [
-            Container(
-              child: Image.asset(pp),
-            )
-          ],
+          actions: [Image.asset(pp)],
         ),
         drawer: const Drawer(),
         body: Stack(
@@ -34,11 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: double.infinity,
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
                 child: Center(
                   child: Column(
                     children: <Widget>[
-                      Container(child: Image.asset(boy)),
+                      Image.asset(boy),
                       const SizedBox(
                         height: 15,
                       ),
@@ -56,50 +54,20 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.yellow,
-          child: const Icon(
-            Icons.add,
-            color: Colors.black,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 30.0),
+          child: FloatingActionButton(
+            onPressed: () => showModalBottomSheet(
+                context: context,
+                builder: (context) => const AddTaskBottomSheet()),
+            backgroundColor: Colors.yellow,
+            child: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.blue,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.home,
-                  color: Colors.white,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.calendar_month,
-                  color: Colors.white,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.access_alarm,
-                  color: Colors.white,
-                ),
-              ),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ))
-            ],
-          ),
-        ),
+        // bottomNavigationBar: BottomBarNavigator(cIndex: 0),
       ),
     );
   }

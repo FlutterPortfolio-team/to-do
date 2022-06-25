@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/res/size_calculator.dart';
 import 'package:to_do/view/onboarding/onboarding.dart';
-
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
+import 'package:to_do/view/widgets/display_task_tile.dart';
 import 'package:to_do/view/widgets/task_priority.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';

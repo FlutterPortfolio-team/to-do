@@ -38,8 +38,9 @@ dependencies:
   shared_preferences: ^2.0.13
   animated_splash_screen: ^1.2.0
   syncfusion_flutter_calendar: ^20.1.60
-  flutter_calendar_carousel: ^2.2.0
+  flutter_calendar_carousel: ^2.1.0
   wheel_chooser: ^1.0.0
+  # dropdown_button: ^1.6.2
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

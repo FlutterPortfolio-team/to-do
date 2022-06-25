@@ -7,12 +7,15 @@ class ChooseTimeWidget extends StatelessWidget {
   final Function(dynamic) onMinutesValueChanged;
   final Function(dynamic) onHourValueChanged;
   final Function(dynamic) onTimeValueChanged;
-  ChooseTimeWidget(
-      {Key? key,
-      required this.onMinutesValueChanged,
-      required this.onHourValueChanged,
-      required this.onTimeValueChanged})
-      : super(key: key);
+  final Function()? onSaved;
+
+  ChooseTimeWidget({
+    Key? key,
+    required this.onMinutesValueChanged,
+    required this.onHourValueChanged,
+    required this.onTimeValueChanged,
+    this.onSaved,
+  }) : super(key: key);
   final minute = [
     '01',
     '02',
@@ -117,6 +120,8 @@ class ChooseTimeWidget extends StatelessWidget {
         height: 270,
         title: 'Choose Time',
         button2Title: 'Save',
+        button1Pressed: () => Navigator.pop(context),
+        button2Pressed: onSaved,
         body: SizedBox(
           width: 250,
           child: Row(
