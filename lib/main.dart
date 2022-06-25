@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/res/size_calculator.dart';
+import 'package:to_do/view/home/home_screen.dart';
 import 'package:to_do/view/onboarding/onboarding.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
 import 'package:to_do/view/widgets/display_task_tile.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
             splashTransition: SplashTransition.scaleTransition,
             pageTransitionType: PageTransitionType.leftToRight,
             splashIconSize: 390,
-            nextScreen: showHome ? MyHomePage() :  OnBoarding())
+            nextScreen: showHome ? HomeScreen() :  OnBoarding())
       
       ,
     );
