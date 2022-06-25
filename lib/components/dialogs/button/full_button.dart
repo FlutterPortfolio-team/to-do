@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do/res/colors/general_color.dart';
+import 'package:to_do/res/size_calculator.dart';
 
 
 
 class FullButton extends StatefulWidget {
   final Function? buttonFunction;
-  final String? buttonText;
+  final String? buttonText, iconAsset;
+  final FontWeight? textWidth;
   final bool isIcon;
   final double height;
   final double width;
+  final double? borderWidth;
   final bool isTextSmall;
-  final String? iconAsset;
-  final Color? buttonOnlineColor, onlineTextColor;
+  final Color? buttonOnlineColor, onlineTextColor, borderColor;
 
   const FullButton(
       {Key? key,
       required this.buttonFunction,
       this.buttonText,
+      this.textWidth,
+      this.borderWidth,
       this.buttonOnlineColor,
+      this.borderColor,
       this.onlineTextColor,
       this.isIcon = false,
       this.isTextSmall = false,
@@ -62,14 +67,22 @@ class _FullButtonState extends State<FullButton> {
             margin: const EdgeInsets.symmetric(vertical: 0.0),
             decoration: BoxDecoration(
                 color: (widget.buttonOnlineColor ?? GenColors.kLightBlue),
-                borderRadius: BorderRadius.circular(4)),
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(
+                  width: widget.borderWidth ?? 0,
+                  color: widget.borderColor ?? Colors.transparent
+                )
+                ),
             child: Center(
                 child: Text(widget.buttonText ?? '',
                     style: TextStyle(
                         color: (widget.onlineTextColor ?? GenColors.kWhiteColor),
-                        fontSize:16.0
+                        fontSize: widget.isTextSmall == true ? 
+                        sizer(true, 14.0, context) :
+                        sizer(true, 16.0, context)
+                        
                             ,
-                        fontWeight: FontWeight.w400))),
+                        fontWeight: widget.textWidth?? FontWeight.w400))),
           ),
         ));
   }
