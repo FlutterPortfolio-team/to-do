@@ -5,7 +5,7 @@ import 'package:to_do/utils/theme_helper.dart';
 class AppTextField extends StatelessWidget {
   final String? hintText;
   final String? labelText;
-
+  final TextInputType? keyboard;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
   const AppTextField({
@@ -14,6 +14,7 @@ class AppTextField extends StatelessWidget {
     this.labelText,
     this.controller,
     this.validator,
+    this.keyboard,
   }) : super(key: key);
 
   @override
@@ -28,6 +29,9 @@ class AppTextField extends StatelessWidget {
           }
           return null;
         },
+        textCapitalization: TextCapitalization.sentences,
+        keyboardType: keyboard,
+        // textInputAction: TextInputAction.go,
         style:
             TextStyle(color: context.resources.color.colorWhite, fontSize: 18),
         decoration: ThemeHelper().textInputDecoration(

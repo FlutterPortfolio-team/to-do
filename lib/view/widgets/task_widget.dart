@@ -66,7 +66,8 @@ class TaskWidget extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     tasks1.add(DisplayTaskTile(
-                        description: description, time: '$hour:$minute'));
+                        description: description,
+                        time: 'Today at $hour:$minute'));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -120,6 +121,6 @@ List<DisplayTaskTile> tasks2 = [
   ),
   DisplayTaskTile(
     description: 'Get your hands dirty',
-    time: 'todat at $time',
+    time: 'Todat at $time',
   ),
 ];

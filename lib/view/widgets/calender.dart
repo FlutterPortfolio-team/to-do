@@ -182,7 +182,7 @@ class _AppCalenderState extends State<AppCalender> {
             /// null for not rendering any border, true for circular border, false for rectangular border
           ),
           Row(
-            children: const [
+            children: [
               // Expanded(
               //   child: OutlinedButton(
               //     child: Text('Cancel',
@@ -201,6 +201,7 @@ class _AppCalenderState extends State<AppCalender> {
               AppButton(
                 text: 'Cancel',
                 useSecondColor: false,
+                onPressed: () => Navigator.pop(context),
               ),
               AppButton(
                 text: 'Choose Time',

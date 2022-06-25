@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/res/app_context_extension.dart';
 
-Future<void> showMyDialog(BuildContext context) async {
+Future<void> showMyDialog(
+    {required BuildContext context,
+    required String firstText,
+    String? secondText}) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -14,14 +17,14 @@ Future<void> showMyDialog(BuildContext context) async {
         ),
         content: SingleChildScrollView(
           child: ListBody(
-            children: const <Widget>[
+            children: <Widget>[
               Text(
-                'On of the text fields is null',
-                style: TextStyle(color: Colors.white),
+                firstText,
+                style: const TextStyle(color: Colors.white),
               ),
               Text(
-                'Please fill the empty text field(s)',
-                style: TextStyle(color: Colors.white),
+                secondText ?? '',
+                style: const TextStyle(color: Colors.white),
               ),
             ],
           ),

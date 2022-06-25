@@ -28,10 +28,18 @@ class TaskTileWidget extends StatefulWidget {
 }
 
 class _TaskTileWidgetState extends State<TaskTileWidget> {
+  double? assignHeight(List<Widget> list) {
+    double height = 92.5;
+    for (int i = 0; i < list.length; i++) {
+      height + 92.5;
+    }
+    return height;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: assignHeight(widget.tasks),
       margin: const EdgeInsets.only(left: 10, right: 10),
       child: Column(
         children: widget.tasks,
@@ -59,7 +67,7 @@ class _TaskTileViewState extends State<TaskTileView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 370,
+      height: 470,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,8 +81,10 @@ class _TaskTileViewState extends State<TaskTileView> {
               selectedValue: selectedValue,
             ),
           ),
-          const SizedBox(height: 15),
-          TaskTileWidget(tasks: widget.tasks, categories: widget.categories),
+          const SizedBox(height: 20),
+          Expanded(
+              child: TaskTileWidget(
+                  tasks: widget.tasks, categories: widget.categories)),
         ],
       ),
     );
@@ -96,7 +106,7 @@ class TaskTypeBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 550,
+      height: 550 + 100,
       child: ListView(
         children: [
           TaskTileView(
