@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "574256803985",
+    "project_id": "dotick-c0951",
+    "storage_bucket": "dotick-c0951.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574256803985:android:5d6e8a74fee816503ecf30",
+        "android_client_info": {
+          "package_name": "com.example.to_do"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574256803985-660fgk1khn072rgje5bq9s99iit94kis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF37hmMVzfZIGFVnXlIkzRFv7rsuAvYpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574256803985-660fgk1khn072rgje5bq9s99iit94kis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

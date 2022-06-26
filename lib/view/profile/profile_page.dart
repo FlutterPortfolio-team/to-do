@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do/components/dialogs/button/full_button.dart';
@@ -163,7 +164,9 @@ class ProfileScreen extends StatelessWidget {
                       height: sizer(false, 16.0, context),
                     ),
                     ProfileTile(
-                        tileFunction: () {},
+                        tileFunction: () {
+                          FirebaseAuth.instance.signOut();
+                        },
                         tailColor: Colors.transparent,
                         icon: 'assets/icons/logout.png',
                         textColor: Colors.red,

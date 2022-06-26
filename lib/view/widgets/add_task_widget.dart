@@ -15,7 +15,7 @@ class AddTaskWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopUpContainer(
         setTodefault: false,
-        title: 'Add Task',
+        title: '',
         showDivider: false,
         button1Pressed: button1Pressed,
         button2Pressed: button2Pressed,

@@ -3,7 +3,7 @@ import 'package:to_do/res/app_context_extension.dart';
 
 class ThemeHelper {
   InputDecoration textInputDecoration(BuildContext context,
-      [String lableText = "", String hintText = ""]) {
+      [String lableText = "", String hintText = "", Color? color]) {
     return InputDecoration(
       labelText: lableText,
       labelStyle:
@@ -11,7 +11,7 @@ class ThemeHelper {
       hintText: hintText,
       hintStyle:
           TextStyle(color: context.resources.color.colorWhite, fontSize: 18),
-      fillColor: context.resources.color.buttonBlue,
+      fillColor: color ?? context.resources.color.buttonBlue,
       filled: true,
       contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
       focusedBorder: OutlineInputBorder(

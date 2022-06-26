@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/res/app_context_extension.dart';
+import 'package:to_do/res/size_calculator.dart';
 import 'package:to_do/view/widgets/app_button.dart';
 
 class PopUpContainer extends StatelessWidget {
@@ -7,6 +8,7 @@ class PopUpContainer extends StatelessWidget {
   final String? button1Title;
   final String? button2Title;
   final Widget body;
+  final isAddTask;
   final Widget? trailingWidget;
   final double? height;
   final double? width;
@@ -14,10 +16,11 @@ class PopUpContainer extends StatelessWidget {
   final bool setTodefault;
   final VoidCallback? button1Pressed;
   final VoidCallback? button2Pressed;
-  const PopUpContainer({
+   PopUpContainer({
     Key? key,
     required this.title,
     required this.body,
+    this.isAddTask,
     this.height,
     this.width,
     this.button1Pressed,
@@ -55,16 +58,28 @@ class PopUpContainer extends StatelessWidget {
           SizedBox(
             height: height == null ? (size - 100) : (height! - 100),
             child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
+                  
                   children: [
-                    Text(
-                      title,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: context.resources.color.colorWhite,
-                          fontSize: 18),
+                    SizedBox(
+                      height: sizer(false, 25.0, context),
+                    ),
+                    Row(
+                      mainAxisAlignment: isAddTask ??  MainAxisAlignment.center ,
+                      children:[ Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: Text(
+                          title,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              color: context.resources.color.colorWhite,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20),
+                        ),
+                      )],
                     ),
                     showDivider
                         ? const Padding(

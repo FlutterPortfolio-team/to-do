@@ -84,7 +84,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             FullButton(
               buttonFunction: (){
-
+                Navigator.of(context).pushNamed('loginScreen');
               },
               height: sizer(false, 51.0, context), 
               width: width,
@@ -96,7 +96,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               FullButton(
                 borderWidth: 2.0,
                 borderColor: GenColors.kLightBlue,
-                buttonFunction:(){} , 
+                buttonFunction:(){
+                  Navigator.of(context).pushNamed('signupScreen');
+                } , 
                 height: sizer(false, 51.0, context), 
                 width: width,
                 buttonText: 'Create account',

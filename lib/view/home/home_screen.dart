@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const boy = 'assets/rafki.png';
     return SafeArea(
       child: Scaffold(
+        //  resizeToAvoidBottomInset: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -58,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(bottom: 30.0),
           child: FloatingActionButton(
             onPressed: () => showModalBottomSheet(
+              isScrollControlled: false,
                 context: context,
                 builder: (context) => const AddTaskBottomSheet()),
             backgroundColor: Colors.yellow,

@@ -40,7 +40,11 @@ dependencies:
   syncfusion_flutter_calendar: ^20.1.60
   flutter_calendar_carousel: ^2.1.0
   wheel_chooser: ^1.0.0
+  flutter_svg: ^1.0.3
   # dropdown_button: ^1.6.2
+  cloud_firestore: ^3.1.5
+  fluttertoast: ^8.0.9
+  firebase_auth: ^3.3.4
 
 dev_dependencies:
   flutter_test:
@@ -52,7 +56,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-  animated_splash_screen: ^1.2.0
   smooth_page_indicator: ^1.0.0+2
 
 # For information on the generic Dart part of this file, see the

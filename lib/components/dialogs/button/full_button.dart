@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 
 
 class FullButton extends StatefulWidget {
-  final Function? buttonFunction;
+  final VoidCallback? buttonFunction;
   final String? buttonText, iconAsset;
   final FontWeight? textWidth;
   final bool isIcon;
@@ -73,7 +75,30 @@ class _FullButtonState extends State<FullButton> {
                   color: widget.borderColor ?? Colors.transparent
                 )
                 ),
-            child: Center(
+            child:  widget.isIcon
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        widget.iconAsset ?? '',
+                        
+                      ),
+                      SizedBox(width: sizer(true, 14, context)),
+                      Text(widget.buttonText ?? '',
+                          style:  TextStyle(
+                        color: (widget.onlineTextColor ?? GenColors.kWhiteColor),
+                        fontSize: widget.isTextSmall == true ? 
+                        sizer(true, 14.0, context) :
+                        sizer(true, 16.0, context)
+                          
+                            ,
+                        fontWeight: widget.textWidth?? FontWeight.w500))
+                    ],
+                  )
+                :
+            
+            Center(
                 child: Text(widget.buttonText ?? '',
                     style: TextStyle(
                         color: (widget.onlineTextColor ?? GenColors.kWhiteColor),
@@ -82,7 +107,8 @@ class _FullButtonState extends State<FullButton> {
                         sizer(true, 16.0, context)
                         
                             ,
-                        fontWeight: widget.textWidth?? FontWeight.w400))),
+                        fontWeight: widget.textWidth?? FontWeight.w400)
+                        )),
           ),
         ));
   }
