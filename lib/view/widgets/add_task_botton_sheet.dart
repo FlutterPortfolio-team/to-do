@@ -19,17 +19,17 @@ class AddTaskBottomSheet extends StatefulWidget {
 }
 
 class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
+  TextEditingController tatskTitle = TextEditingController();
+  TextEditingController description = TextEditingController();
+  String hour = '';
+  String minute = '';
   @override
   Widget build(BuildContext context) {
-    TextEditingController tatskTitle = TextEditingController();
-    TextEditingController description = TextEditingController();
-
-    double height = MediaQuery.of(context).size.height / 2.5;
+    double height = MediaQuery.of(context).size.height / 3;
     AppCalender calendar = AppCalender();
     DateTime? currentDate = calendar.selectedDaytime;
     debugPrint(currentDate.toString());
-    String hour = '';
-    String minute = '';
+
     // ignore: unused_local_variable
     TaskWidget taskWidget;
     return Scaffold(
@@ -100,10 +100,18 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                                           displayDialog(
                                               context,
                                               ChooseTimeWidget(
-                                                onHourValueChanged: (value) =>
-                                                    hour = value,
-                                                onMinutesValueChanged:
-                                                    (value) => minute = value,
+                                                onHourValueChanged: (value) {
+                                                  debugPrint(
+                                                      'This is the time in $hour');
+                                                  setState(() {
+                                                    hour = value;
+                                                  });
+                                                },
+                                                onMinutesValueChanged: (value) {
+                                                  setState(() {
+                                                    minute = value;
+                                                  });
+                                                },
                                                 onTimeValueChanged: (time) =>
                                                     debugPrint(time.toString()),
                                                 onSaved: () {
@@ -115,7 +123,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                                                     showMyDialog(
                                                         context: context,
                                                         firstText:
-                                                            'Please the time');
+                                                            'Please set the time');
                                                   } else {
                                                     Navigator.pop(context);
                                                   }

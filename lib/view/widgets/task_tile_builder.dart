@@ -41,7 +41,7 @@ class _TaskTileWidgetState extends State<TaskTileWidget> {
     return Container(
       height: assignHeight(widget.tasks),
       margin: const EdgeInsets.only(left: 10, right: 10),
-      child: Column(
+      child: ListView(
         children: widget.tasks,
       ),
     );

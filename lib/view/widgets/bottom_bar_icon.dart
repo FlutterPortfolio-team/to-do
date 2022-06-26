@@ -14,8 +14,8 @@ class BottomBarIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
-      width: 70,
+      height: 60,
+      width: 60,
       child: IconButton(
         onPressed: () {},
         icon: SizedBox(
