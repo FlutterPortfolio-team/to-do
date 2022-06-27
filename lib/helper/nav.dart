@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/app_context_extension.dart';
 import 'package:to_do/view/widgets/bottom_bar_icon.dart';
 
@@ -12,7 +13,12 @@ class BottomBarNavigator extends StatefulWidget {
 
 class _BottomBarNavigatorState extends State<BottomBarNavigator> {
   int get cInd => widget.cIndex;
-  List<String> nav = [];
+  List<String> nav = [
+    Routes.homeRoute,
+    Routes.calenderRoute,
+    '',
+    Routes.settingRoute
+  ];
 
   @override
   Widget build(BuildContext context) {

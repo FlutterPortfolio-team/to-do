@@ -1,22 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:to_do/components/dialogs/button/full_button.dart';
 import 'package:to_do/data/service/authentication_service.dart';
 import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
-import 'package:to_do/view/home/home_screen.dart';
 
-import '../../components/loader/overlayLoader.dart';
 import '../../res/regex.dart';
-import '../widgets/app_text_field.dart';
 import '../widgets/input_field.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -28,15 +22,16 @@ class LoginScreen extends StatefulWidget {
 
 
 class _LoginScreenState extends State<LoginScreen> {
-  static final _lformKey = new GlobalKey<FormState>();
+  static final _lformKey = GlobalKey<FormState>();
 
   FocusNode focusNode = FocusNode();
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  AuthenticationService _auth =   AuthenticationService(FirebaseAuth.instance);
+  final AuthenticationService _auth =   AuthenticationService(FirebaseAuth.instance);
 
 
 
+  @override
   void setState(fn) {
     if (mounted) super.setState(fn);
   }
@@ -119,7 +114,7 @@ Future loginUser() async {
                             )
                           ],
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -210,7 +205,7 @@ Future loginUser() async {
                             child:  Container(
                                 margin:
                                     const EdgeInsets.only(left: 10.0, right: 15.0),
-                                child: Divider(
+                                child: const Divider(
                                   color: Colors.black,
                                   height: 50,
                                 )),
@@ -222,10 +217,10 @@ Future loginUser() async {
                                 fontSize: sizer(true, 15.0, context)),
                           ),
                           Expanded(
-                            child: new Container(
+                            child: Container(
                                 margin:
                                     const EdgeInsets.only(left: 15.0, right: 10.0),
-                                child: Divider(
+                                child: const Divider(
                                   color: Colors.black,
                                   height: 50,
                                 )),

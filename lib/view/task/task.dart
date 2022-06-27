@@ -22,7 +22,7 @@ class _TaskState extends State<Task> {
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
       Row(children: [
-        Icon(Icons.density_small_outlined),
+        const Icon(Icons.density_small_outlined),
         Text(
           widget.texty,
         ),

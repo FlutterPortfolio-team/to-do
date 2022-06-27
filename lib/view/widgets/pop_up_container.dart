@@ -16,7 +16,7 @@ class PopUpContainer extends StatelessWidget {
   final bool setTodefault;
   final VoidCallback? button1Pressed;
   final VoidCallback? button2Pressed;
-   PopUpContainer({
+   const PopUpContainer({
     Key? key,
     required this.title,
     required this.body,

@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(bottom: 30.0),
           child: FloatingActionButton(
             onPressed: () => showModalBottomSheet(
-              isScrollControlled: false,
+              isScrollControlled: true,
                 context: context,
                 builder: (context) => const AddTaskBottomSheet()),
             backgroundColor: Colors.yellow,

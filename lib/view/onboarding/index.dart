@@ -24,33 +24,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           padding: EdgeInsets.only(left: sizer(true, 24.0, context), right:  sizer(true, 24.0, context), top: sizer(false, 13.0, context) , bottom:  sizer(false, 48.0, context) ),
           child: Column(
             children: [
-              Row(
-                children: [
-                  ButtonTheme(
-                  minWidth: 20.0,
-                  height: 100.0,
-                    child: Container(
-                      width: 20.0,
-                      child: ElevatedButton(                  
-                              style: ElevatedButton.styleFrom(
-                                primary: GenColors.kBlue,
-                                elevation: 0,
-                                fixedSize: Size(15.0, 24.0)
-                              ),
-                              onPressed: () {
-                                (Navigator.of(context).pop());
-                              }, 
-                              child: Icon(
-                                Icons.arrow_back_ios_new_rounded, 
-                                color: Colors.white,
-                                size: 20 ,
-                                ) ),
-                    ),
-                  ),
+              // Row(
+              //   children: [
+              //     ButtonTheme(
+              //     minWidth: 20.0,
+              //     height: 100.0,
+              //       child: SizedBox(
+              //         width: 20.0,
+              //         child: ElevatedButton(                  
+              //                 style: ElevatedButton.styleFrom(
+              //                   primary: GenColors.kBlue,
+              //                   elevation: 0,
+              //                   fixedSize: const Size(15.0, 24.0)
+              //                 ),
+              //                 onPressed: () {
+              //                   (Navigator.of(context).pop());
+              //                 }, 
+              //                 child: const Icon(
+              //                   Icons.arrow_back_ios_new_rounded, 
+              //                   color: Colors.white,
+              //                   size: 20 ,
+              //                   ) ),
+              //       ),
+              //     ),
 
         
-                ],
-              ),
+              //   ],
+              // ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -76,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   height: sizer(false, 131.0, context),
                 ),
 
-                Image.asset('assets/images/welcome.jpg')
+                Image.asset('assets/Images/welcome.jpg')
                 ],
               ),
                SizedBox(

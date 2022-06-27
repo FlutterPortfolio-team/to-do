@@ -16,9 +16,9 @@ class LoadingOverlay {
     showDialog(
       context: _context,
       barrierDismissible: false,
-      barrierColor: Color.fromRGBO(0, 0, 0, 0.3),
+      barrierColor: const Color.fromRGBO(0, 0, 0, 0.3),
       builder: (context) {
-        return new BackdropFilter(
+        return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: _FullScreenLoader());
       },
@@ -44,13 +44,13 @@ class _FullScreenLoader extends StatelessWidget {
         //  decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0)),
         child: Center(
             child: Platform.isIOS
-                ? CupertinoActivityIndicator()
+                ? const CupertinoActivityIndicator()
                 // : SpinKitRing(
                 //     color: redColor,
                 //     size: 50.0,
                 //     duration: Duration(milliseconds: 500),
                 //   )
-                : CircularProgressIndicator(
+                : const CircularProgressIndicator(
                     valueColor:
                         AlwaysStoppedAnimation<Color>(GenColors.kBlue),
                   )));

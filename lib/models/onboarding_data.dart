@@ -14,13 +14,13 @@ List<OnboardingData> onboardingData = [
   OnboardingData(
     title: 'Manage your tasks',
     description:'You can easily manage all of your daily tasks with DoTick',
-    imageSrc: 'assets/images/frameone.jpg',
+    imageSrc: 'assets/Images/frameone.jpg',
   ),
   OnboardingData(
     title: 'Create daily routine',
     description:
         'In DoTick you can create your personalized routine to stay productive',
-    imageSrc: 'assets/images/frametwo.jpg',
+    imageSrc: 'assets/Images/frametwo.jpg',
   ),
   OnboardingData(
     title: 'Organize your tasks',

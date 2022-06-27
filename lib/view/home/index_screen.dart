@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/helper/nav.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
-import 'package:to_do/view/widgets/bottom_bar_icon.dart';
 
 class IndexScreen extends StatefulWidget {
   final Widget? body;

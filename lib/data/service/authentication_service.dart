@@ -41,9 +41,7 @@ class AuthenticationService {
       print('start user check');
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      if (_firebaseAuth.currentUser!.uid != null) {
-        Navigator.of(context).pushNamed(Routes.homeRoute);
-      }
+      Navigator.of(context).pushNamed(Routes.homeRoute);
       print('this is the email and password //$email $password///');
     } on FirebaseAuthException catch (e) {
       print(e);
@@ -54,7 +52,6 @@ class AuthenticationService {
         );
      
 
-      ;
     }
   }
 

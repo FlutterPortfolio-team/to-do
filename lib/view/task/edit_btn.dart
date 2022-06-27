@@ -15,6 +15,6 @@ class EditButton extends StatefulWidget {
 class _EditButtonState extends State<EditButton> {
   @override
   Widget build(BuildContext context) {
-    return Material();
+    return const Material();
   }
 }

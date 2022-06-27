@@ -2,7 +2,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:to_do/components/dialogs/button/full_button.dart';
 import 'package:to_do/helper/routes.dart';
@@ -11,7 +10,6 @@ import 'package:to_do/res/size_calculator.dart';
 
 import '../../data/service/authentication_service.dart';
 import '../../res/regex.dart';
-import '../widgets/app_text_field.dart';
 import '../widgets/input_field.dart';
 
  
@@ -23,13 +21,13 @@ import '../widgets/input_field.dart';
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-   static final _formKey = new GlobalKey<FormState>();
+   static final _formKey = GlobalKey<FormState>();
    FocusNode focusNode = FocusNode();
   TextEditingController emailEditingController = TextEditingController();
   TextEditingController newPasswordEditingController = TextEditingController();
   TextEditingController confrimPasswordEditingController =
       TextEditingController();
-  AuthenticationService _auth = AuthenticationService(FirebaseAuth.instance);
+  final AuthenticationService _auth = AuthenticationService(FirebaseAuth.instance);
 
   String? _email;
   bool obscurePassword = true;
@@ -82,7 +80,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: Icon(Icons.arrow_back_ios_new_rounded),
+                      icon: const Icon(Icons.arrow_back_ios_new_rounded),
                     ),
        
       ),
@@ -112,7 +110,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       )
                     ],
                   ),
-                  SizedBox(height:20),
+                  const SizedBox(height:20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children:[ Text(
@@ -246,20 +244,20 @@ class _SignupScreenState extends State<SignupScreen> {
 
                      Row(children: <Widget>[
                     Expanded(
-                      child: new Container(
+                      child: Container(
                           margin:
                               const EdgeInsets.only(left: 10.0, right: 15.0),
-                          child: Divider(
+                          child: const Divider(
                             color: Colors.black,
                             height: 50,
                           )),
                     ),
                     Text("or", style: TextStyle(fontWeight: FontWeight.w500, fontSize: sizer(true, 15.0, context)),),
                     Expanded(
-                      child: new Container(
+                      child: Container(
                           margin:
                               const EdgeInsets.only(left: 15.0, right: 10.0),
-                          child: Divider(
+                          child: const Divider(
                             color: Colors.black,
                             height: 50,
                           )),
@@ -315,7 +313,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),]
                       ),
 
-                      SizedBox(height: 34.0,)
+                      const SizedBox(height: 34.0,)
 
 
                           

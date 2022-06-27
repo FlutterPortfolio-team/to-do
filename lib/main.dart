@@ -1,12 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/view/authentication/login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:to_do/view/home/home_screen.dart';
 import 'package:to_do/view/onboarding/onboarding.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
 import 'package:to_do/view/widgets/task_priority.dart';
@@ -40,7 +36,7 @@ class MyApp extends StatelessWidget {
       home:  AnimatedSplashScreen(
             duration: 3000,
             splash: Image.asset(
-              'assets/images/logo.jpg',
+              'assets/Images/logo.jpg',
               height: 328,
               width: 328,
             ),

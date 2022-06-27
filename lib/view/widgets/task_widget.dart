@@ -30,7 +30,7 @@ class TaskWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Text(
+               const Text(
                 'Add Task',
                 textAlign:TextAlign.start,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

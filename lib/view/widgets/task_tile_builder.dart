@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:to_do/utils/drop_down.dart';
-import 'package:to_do/view/widgets/display_task_tile.dart';
+import 'package:to_do/res/app_context_extension.dart';
 
 List<String> categories1 = [
   'Go to work',
@@ -41,7 +38,7 @@ class _TaskTileWidgetState extends State<TaskTileWidget> {
     return Container(
       height: assignHeight(widget.tasks),
       margin: const EdgeInsets.only(left: 10, right: 10),
-      child: Column(
+      child: ListView(
         children: widget.tasks,
       ),
     );
@@ -71,16 +68,22 @@ class _TaskTileViewState extends State<TaskTileView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 10.0),
-          //   child: dropDown(
-          //     context: context,
-          //     title: widget.taskTypep,
-          //     categories: categories2,
-          //     onChanged: onChanged,
-          //     selectedValue: selectedValue,
-          //   ),
-          // ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: ElevatedButton(onPressed: null, 
+              style: OutlinedButton.styleFrom(backgroundColor: context.resources.color.buttonBlue),
+              child: Text(widget.taskTypep,style: const TextStyle(color: Colors.white),)),
+            )
+            // child: dropDown(
+            //   context: context,
+            //   title: widget.taskTypep,
+            //   categories: categories2,
+            //   onChanged: onChanged,
+            //   selectedValue: selectedValue,
+            // ),
+          ),
           const SizedBox(height: 20),
           Expanded(
               child: TaskTileWidget(

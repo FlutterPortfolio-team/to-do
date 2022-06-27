@@ -1,14 +1,10 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:async/async.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../components/dialogs/button/full_button.dart';
-import '../../components/profile/list_tile.dart';
 import '../../models/onboarding_data.dart';
 import '../../res/size_calculator.dart';
 import 'onboarding_content.dart';
@@ -46,7 +42,7 @@ class _OnBoardingState extends State<OnBoarding> {
             children: <Widget>[
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                children: const [
                   // SizedBox(
                   //   height: 32.0,
                   // ),
@@ -121,7 +117,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       },
                       child: Text(
                        currentIndex==2 ? 'Back' :'Skip',
-                        style: TextStyle(color: GenColors.kBlue),
+                        style: const TextStyle(color: GenColors.kBlue),
                       )),
                   Row(
                     children: [
@@ -132,14 +128,14 @@ class _OnBoardingState extends State<OnBoarding> {
                         child: ElevatedButton(
                             onPressed: () {
                               _controller.nextPage(
-                                duration: Duration(milliseconds: 500), 
+                                duration: const Duration(milliseconds: 500), 
                                 curve: Curves.easeInOut);
                             },
                             style: ElevatedButton.styleFrom(
                               elevation: 0,
                               primary: GenColors.kLightBlue,
                             ),
-                            child: Text(
+                            child: const Text(
                               'Next',
                               style: TextStyle(color: Colors.white),
                             )),
@@ -157,7 +153,7 @@ class _OnBoardingState extends State<OnBoarding> {
                               elevation: 0,
                               primary: GenColors.kLightBlue,
                             ),
-                            child: Text(
+                            child: const Text(
                               'Get Started',
                               style: TextStyle(color: Colors.white),
 
