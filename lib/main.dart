@@ -13,10 +13,10 @@ import 'package:to_do/helper/routes.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-   final prefs = await SharedPreferences.getInstance();
-   final showHome =  prefs.getBool('showHome') ?? false;
-   
-  runApp( MyApp(showHome : showHome));
+  final prefs = await SharedPreferences.getInstance();
+  final showHome = prefs.getBool('showHome') ?? false;
+
+  runApp(MyApp(showHome: showHome));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,20 +33,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  AnimatedSplashScreen(
-            duration: 3000,
-            splash: Image.asset(
-              'assets/Images/logo.jpg',
-              height: 328,
-              width: 328,
-            ),
-            backgroundColor: Colors.white,
-            splashTransition: SplashTransition.scaleTransition,
-            pageTransitionType: PageTransitionType.leftToRight,
-            splashIconSize: 390,
-            nextScreen: showHome ? const LoginScreen() :  const OnBoarding())
-      
-      ,
+      home: AnimatedSplashScreen(
+          duration: 3000,
+          splash: Image.asset(
+            'assets/Images/logo.jpg',
+            height: 328,
+            width: 328,
+          ),
+          backgroundColor: Colors.white,
+          splashTransition: SplashTransition.scaleTransition,
+          pageTransitionType: PageTransitionType.leftToRight,
+          splashIconSize: 390,
+          nextScreen: showHome ? const LoginScreen() : const OnBoarding()),
     );
   }
 }
@@ -69,17 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => showModalBottomSheet(
             context: context, builder: (context) => const AddTaskBottomSheet()),
       ),
-      body: Center(
-        child: TaskPriority(
-            // button1Pressed: () => displayDialog(
-            //     context,
-            //     ChooseTimeWidget(
-            //       onHourValueChanged: (v) => v,
-            //       onMinutesValueChanged: (v) => v,
-            //       onTimeValueChanged: (v) => v,
-            //     )),
-            ),
-      ),
+      body: Text(''),
     );
   }
 }

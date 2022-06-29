@@ -36,6 +36,6 @@ User userFromJson(String str) {
 }
 
 String userToJson(User user) {
-  final data = userToJson(user);
-  return data;
+  final data = user.toJson();
+  return jsonEncode(data);
 }

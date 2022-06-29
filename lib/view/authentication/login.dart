@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:to_do/components/dialogs/button/full_button.dart';
+import 'package:to_do/data/network/user_api.dart';
 import 'package:to_do/data/service/authentication_service.dart';
 import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/colors/general_color.dart';
@@ -39,13 +40,21 @@ class _LoginScreenState extends State<LoginScreen> {
 Future loginUser() async {
   // Future.delayed(Duration(milliseconds: 5));
   print('--------------- enter home page-------------');
-  await _auth.signIn(
+  await signInUser(
     email: userNameController.text.trim(), 
     password: passwordController.text.trim(),
     context: context
     );
-    
 }
+// Future loginUser() async {
+//   // Future.delayed(Duration(milliseconds: 5));
+//   print('--------------- enter home page-------------');
+//   await _auth.signIn(
+//     email: userNameController.text.trim(), 
+//     password: passwordController.text.trim(),
+//     context: context
+//     );
+// }
 
 
 

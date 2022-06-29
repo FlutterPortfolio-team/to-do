@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:to_do/components/dialogs/button/full_button.dart';
+import 'package:to_do/data/network/user_api.dart';
 import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
@@ -41,6 +42,14 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
+  showErrorToast() {
+    Fluttertoast.showToast(
+      gravity: ToastGravity.BOTTOM,
+      toastLength: Toast.LENGTH_LONG,
+      msg: 'Invalid',
+    );
+  }
+
   Future signUpUser() async {
     // Future.delayed(Duration(milliseconds: 5));
     print('--------------- enter home page-------------');
@@ -50,12 +59,30 @@ class _SignupScreenState extends State<SignupScreen> {
       newPasswordEditingController.clear();
       confrimPasswordEditingController.clear();
     } else {
-      await _auth.signUp(
-          email: emailEditingController.text.trim(),
-          password: newPasswordEditingController.text.trim(),
-          context: context);
+      await createUser(
+        userName: usernameEditingController.text.trim(),
+        email: emailEditingController.text.trim(),
+        password: newPasswordEditingController.text.trim(),
+        context: context,
+      );
     }
   }
+
+  // Future signUpUser() async {
+  //   // Future.delayed(Duration(milliseconds: 5));
+  //   print('--------------- enter home page-------------');
+  //   if (newPasswordEditingController.text.trim() !=
+  //       confrimPasswordEditingController.text.trim()) {
+  //     showCustomToast();
+  //     newPasswordEditingController.clear();
+  //     confrimPasswordEditingController.clear();
+  //   } else {
+  //     await _auth.signUp(
+  //         email: emailEditingController.text.trim(),
+  //         password: newPasswordEditingController.text.trim(),
+  //         context: context);
+  //   }
+  // }
 
   @override
   void dispose() {
@@ -124,16 +151,28 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: sizer(false, 13.0, context),
                 ),
                 GeneralTextField(
-                  hintText: 'Enter your username',
-                  focusNode: focusNode,
                   textController: usernameEditingController,
-                  keyboardType: TextInputType.none,
-                  autoValidateMode: AutovalidateMode.onUserInteraction,
-                  // hintText: "email",
-                  validator: passwordVal,
-                  onChanged: (val) => setState(() {
-                    _email = val;
-                  }),
+                  // validator: passwordVal,
+                  hintText: 'Enter your username',
+                  obscureText: obscurePassword,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.deny(RegExp(r"\s"))
+                  ],
+                  onChanged: (val) => setState(() {}),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        obscurePassword = !obscurePassword;
+                      });
+                    },
+                    icon: Icon(
+                      obscurePassword
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                      size: sizer(true, 24, context),
+                      color: GenColors.black,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Row(

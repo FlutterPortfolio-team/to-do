@@ -25,11 +25,10 @@ class NetworApiService extends BaseApiService {
     try {
       final response = await http.post(
         Uri.parse(baseUrl + url),
-        headers: {
-          HttpHeaders.contentTypeHeader: '',
-          HttpHeaders.authorizationHeader: '',
-        },
-        body: userToJson(user),
+        headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+        body: jsonEncode(user),
       );
       responseJson = returnResponse(response);
     } on SocketException {
@@ -39,7 +38,7 @@ class NetworApiService extends BaseApiService {
   }
 
   @override
-  Future postTaskResponse(String url, Task task) async {
+  Future<dynamic> postTaskResponse(String url, Task task) async {
     dynamic responseJson;
     try {
       final response = await http.post(
