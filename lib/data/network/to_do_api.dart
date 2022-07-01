@@ -1,8 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:http/http.dart' as http;
-
 Future<String> createTask({
   required int userId,
   required String title,
@@ -26,17 +24,32 @@ Future<String> createTask({
   }
 }
 
-void main() async {
-  var request = http.Request('GET', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/'));
-  
-  
-  http.StreamedResponse response = await request.send();
-  
-  if (response.statusCode == 200) {
-    print(await response.stream.bytesToString());
-  }
-  else {
-    print(response.reasonPhrase);
-  }
-  
-}
+// void main() async {
+//   var request = http.Request('GET', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/'));
+
+//   http.StreamedResponse response = await request.send();
+
+//   if (response.statusCode == 200) {
+//     print(await response.stream.bytesToString());
+//   }
+//   else {
+//     print(response.reasonPhrase);
+//   }
+
+// }
+
+// void main() async {
+//   var request = http.Request(
+//       'POST', Uri.parse('https://todo22a.herokuapp.com/api/v1/user/register'));
+//   request.body =
+//       '''{\r\n    \r\n    "username": "Adegbite",\r\n\t"email": "adegbite@gmail.com",\r\n\t"password": "adeola"\r\n    \r\n}''';
+
+//   http.StreamedResponse response = await request.send();
+
+//   if (response.statusCode == 200) {
+//     print(await response.stream.bytesToString());
+//   } else {
+//     print(response.reasonPhrase);
+//   }
+//   print(response.statusCode.toString());
+// }

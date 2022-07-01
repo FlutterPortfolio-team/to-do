@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/view/authentication/login.dart';
 import 'package:to_do/view/onboarding/onboarding.dart';
-import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
-import 'package:to_do/view/widgets/task_priority.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:to_do/helper/routes.dart';
+import 'package:to_do/view/task/task_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +16,7 @@ Future main() async {
   final showHome = prefs.getBool('showHome') ?? false;
 
   runApp(MyApp(showHome: showHome));
+  // runApp(MaterialApp(home: TaskScreen()));
 }
 
 class MyApp extends StatelessWidget {
@@ -48,85 +48,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('TO-DO'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => showModalBottomSheet(
-            context: context, builder: (context) => const AddTaskBottomSheet()),
-      ),
-      body: Text(''),
-    );
-  }
-}
-
-
-
-// class MainPage extends StatelessWidget {
-//   const MainPage({ Key? key }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) => Scaffold(
-//        body: StreamBuilder(
-        
-//          stream: FirebaseAuth.instance.authStateChanges(),
-//          builder: (context, snapshot) {
-//           if (snapshot.hasData)  {
-//            return HomeScreen();
-//                 ;
-//           } else {
-//            return const LoginScreen();
-//           }
-//          }
-//        ),
-//     );
-  
-// }
-
-
-
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({Key? key}) : super(key: key);
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('TO-DO'),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () => showModalBottomSheet(
-//             context: context, builder: (context) => const AddTaskBottomSheet()),
-//       ),
-//       body: Center(
-//         child: TaskPriority(
-//             // button1Pressed: () => displayDialog(
-//             //     context,
-//             //     ChooseTimeWidget(
-//             //       onHourValueChanged: (v) => v,
-//             //       onMinutesValueChanged: (v) => v,
-//             //       onTimeValueChanged: (v) => v,
-//             //     )),
-//             ),
-//       ),
-//     );
-//   }
-// }

@@ -16,7 +16,7 @@ class PopUpContainer extends StatelessWidget {
   final bool setTodefault;
   final VoidCallback? button1Pressed;
   final VoidCallback? button2Pressed;
-   const PopUpContainer({
+  const PopUpContainer({
     Key? key,
     required this.title,
     required this.body,
@@ -62,24 +62,25 @@ class PopUpContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
-                  
                   children: [
                     SizedBox(
-                      height: sizer(false, 25.0, context),
+                      height: sizer(false, 10.0, context),
                     ),
                     Row(
-                      mainAxisAlignment: isAddTask ??  MainAxisAlignment.center ,
-                      children:[ Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                        child: Text(
-                          title,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              color: context.resources.color.colorWhite,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20),
-                        ),
-                      )],
+                      mainAxisAlignment: isAddTask ?? MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                          child: Text(
+                            title,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                                color: context.resources.color.colorWhite,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20),
+                          ),
+                        )
+                      ],
                     ),
                     showDivider
                         ? const Padding(

@@ -11,12 +11,10 @@ class TaskWidget extends StatelessWidget {
     required this.description,
     required this.hour,
     required this.minute,
+    required this.taskDate,
   }) : super(key: key);
 
-  final String taskTitle;
-  final String description;
-  final String hour;
-  final String minute;
+  final String taskTitle, description, hour, minute, taskDate;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +28,9 @@ class TaskWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               const Text(
+              const Text(
                 'Add Task',
-                textAlign:TextAlign.start,
+                textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 50),
@@ -66,17 +64,21 @@ class TaskWidget extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    tasks1.add(DisplayTaskTile(
-                        description: description,
-                        time: 'Today at $hour:$minute'));
+                    todayTasks.add(DisplayTaskTile(
+                      title: taskTitle,
+                      description: description,
+                      hour: hour,
+                      minute: minutes,
+                      taskDate: taskDate,
+                    ));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => IndexScreen(
                                   showBottomBar: true,
                                   body: TaskTypeBuilder(
-                                    tasks1: tasks1,
-                                    tasks2: tasks2,
+                                    tasks1: todayTasks,
+                                    tasks2: completedTasks,
                                   ),
                                 )));
                   },
@@ -95,33 +97,53 @@ class TaskWidget extends StatelessWidget {
 }
 
 DateTime dateTime = DateTime.now();
-DateFormat formatter = DateFormat('hh:mm aaa');
-final time = formatter.format(dateTime);
-List<DisplayTaskTile> tasks1 = [
+DateFormat formatter1 = DateFormat('hh');
+DateFormat formatter2 = DateFormat('mm');
+final hour = formatter1.format(dateTime);
+final minutes = formatter2.format(dateTime);
+List<DisplayTaskTile> todayTasks = [
   DisplayTaskTile(
     description: 'Go to work',
-    time: 'Todat at $time',
+    hour: hour,
+    minute: minutes,
+    taskDate: '09/07/20',
+    title: 'Sports',
   ),
   DisplayTaskTile(
     description: 'Play bet',
-    time: 'Todat at $time',
+    hour: hour,
+    minute: minutes,
+    taskDate: '09/07/20',
+    title: 'Sports',
   ),
   DisplayTaskTile(
     description: 'Get your hands dirty',
-    time: 'todat at $time',
+    hour: hour,
+    minute: minutes,
+    taskDate: '09/07/20',
+    title: 'Go to school',
   ),
 ];
-List<DisplayTaskTile> tasks2 = [
+List<DisplayTaskTile> completedTasks = [
   DisplayTaskTile(
     description: 'Go to work',
-    time: 'Todat at $time',
+    hour: hour,
+    minute: minutes,
+    taskDate: '09/07/20',
+    title: 'Study',
   ),
   DisplayTaskTile(
     description: 'Play bet',
-    time: 'Todat at $time',
+    hour: hour,
+    minute: minutes,
+    taskDate: '09/07/20',
+    title: 'Sports',
   ),
   DisplayTaskTile(
     description: 'Get your hands dirty',
-    time: 'Todat at $time',
+    hour: hour,
+    minute: minutes,
+    taskDate: '09/07/20',
+    title: 'Sports',
   ),
 ];

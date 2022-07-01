@@ -4,11 +4,12 @@ class BottomBarIcon extends StatelessWidget {
   final IconData icon;
   final String text;
   final Color? color;
+    final VoidCallback? onPressed;
   const BottomBarIcon({
     Key? key,
     required this.icon,
     required this.text,
-    this.color,
+    this.color, this.onPressed,
   }) : super(key: key);
 
   @override
@@ -17,7 +18,7 @@ class BottomBarIcon extends StatelessWidget {
       height: 70,
       width: 70,
       child: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: SizedBox(
           // height: 100,
           child: Column(

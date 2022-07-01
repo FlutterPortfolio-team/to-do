@@ -24,7 +24,6 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height / 2.5;
-    AppCalender calendar = const AppCalender();
 
     // DateTime? currentDate = calendar.selectedDaytime;
     // debugPrint(currentDate.toString());
@@ -119,14 +118,19 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                                                 description:
                                                     description.text.trim(),
                                                 taskTitle:
-                                                    tatskTitle.text.trim(),
+                                                    tatskTitle.text.trim(), taskDate: '',
                                               ),
                                             ),
                                           ),
                                         );
                                         displayDialog(
                                           context,
-                                          calendar = const AppCalender(),
+                                        Calendar(
+                                          minute: minute,
+                                          hour: hour,
+                                          description: description.text.trim(),
+                                          tasktitle: tatskTitle.text.trim(),
+                                        ),
                                         );
                                       } else {
                                         showMyDialog(
@@ -163,7 +167,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                                           minute: minute,
                                           hour: hour,
                                           description: description.text.trim(),
-                                          taskTitle: tatskTitle.text.trim(),
+                                          taskTitle: tatskTitle.text.trim(), taskDate: '',
                                         ),
                                       ),
                                     ),

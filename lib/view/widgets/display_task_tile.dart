@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/res/app_context_extension.dart';
+import 'package:to_do/view/task/task_screen.dart';
 
 class DisplayTaskTile extends StatefulWidget {
-  final String description;
-  final String time;
-  const DisplayTaskTile(
-      {Key? key, required this.description, required this.time})
-      : super(key: key);
+  final String description, taskDate, title, hour, minute;
+
+  const DisplayTaskTile({
+    Key? key,
+    required this.description,
+    required this.taskDate,
+    required this.title,
+    required this.hour,
+    required this.minute,
+  }) : super(key: key);
 
   @override
   State<DisplayTaskTile> createState() => _DisplayTaskTileState();
@@ -16,42 +22,52 @@ class _DisplayTaskTileState extends State<DisplayTaskTile> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-      height: 72,
-      decoration: BoxDecoration(
-        color: context.resources.color.buttonBlue,
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
-      ),
-      child: Row(
-        children: [
-          Checkbox(
-              shape: const CircleBorder(),
-              checkColor: context.resources.color.buttonBlue,
-              fillColor:
-                  MaterialStateProperty.all(context.resources.color.buttonGrey),
-              value: value,
-              onChanged: (value) {
-                setState(() {
-                  this.value = value!;
-                });
-              }),
-          const SizedBox(height: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                widget.description,
-                style: const TextStyle(fontSize: 16, color: Colors.white),
-              ),
-              Text(
-                widget.time,
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-            ],
-          ),
-        ],
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => TaskScreen(
+                title: widget.title,
+                description: widget.description,
+                hour: widget.hour,
+                minute: widget.minute,
+                taskDate: widget.taskDate,
+              ))),
+      child: Container(
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        height: 72,
+        decoration: BoxDecoration(
+          color: context.resources.color.buttonBlue,
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
+        ),
+        child: Row(
+          children: [
+            Checkbox(
+                shape: const CircleBorder(),
+                checkColor: context.resources.color.buttonBlue,
+                fillColor: MaterialStateProperty.all(
+                    context.resources.color.buttonGrey),
+                value: value,
+                onChanged: (value) {
+                  setState(() {
+                    this.value = value!;
+                  });
+                }),
+            const SizedBox(height: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  widget.description,
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
+                Text(
+                  'Todat At ${widget.hour};${widget.minute}',
+                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

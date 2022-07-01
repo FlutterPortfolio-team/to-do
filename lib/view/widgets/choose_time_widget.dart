@@ -8,13 +8,14 @@ class ChooseTimeWidget extends StatelessWidget {
   final Function(dynamic) onHourValueChanged;
   final Function(dynamic) onTimeValueChanged;
   final Function()? onSaved;
+  final int? sHour, sMin;
 
   ChooseTimeWidget({
     Key? key,
     required this.onMinutesValueChanged,
     required this.onHourValueChanged,
     required this.onTimeValueChanged,
-    this.onSaved,
+    this.onSaved, this.sHour, this.sMin,
   }) : super(key: key);
   final minute = [
     '01',
@@ -97,15 +98,15 @@ class ChooseTimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var hourWheel = WheelChooser(
       onValueChanged: onHourValueChanged,
-      datas: minute,
-      startPosition: 5,
+      datas: hour,
+      startPosition: sHour== null ? 5 : sHour!+1,
       selectTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
       unSelectTextStyle: const TextStyle(fontSize: 20, color: Colors.grey),
     );
     var minutesWheel = WheelChooser(
       onValueChanged: onMinutesValueChanged,
       datas: minute,
-      startPosition: 29,
+      startPosition: sMin == null ?  29 : sMin! +1,
       selectTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
       unSelectTextStyle: const TextStyle(fontSize: 20, color: Colors.grey),
     );

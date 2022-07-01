@@ -17,9 +17,9 @@ class _BottomBarNavigatorState extends State<BottomBarNavigator> {
     Routes.homeRoute,
     Routes.calenderRoute,
     '',
-    Routes.settingRoute
+    Routes.profileRoute
   ];
-
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     final defaultColor = context.resources.color.buttonBlue;
@@ -35,63 +35,37 @@ class _BottomBarNavigatorState extends State<BottomBarNavigator> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Column(
-              children: [
-                BottomBarIcon(
-                  icon: Icons.home_filled,
-                  text: 'Home',
-                  color: currentIndex == 0 ? defaultColor : null,
-                ),
-              ],
-            ),
-            label: '',
+            icon: const Icon(Icons.home_filled),
+            backgroundColor: currentIndex == 0 ? defaultColor : null,
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Column(
-              children: [
-                BottomBarIcon(
-                  icon: Icons.calendar_month,
-                  text: 'Calendar',
-                  color: currentIndex == 1 ? defaultColor : null,
-                ),
-              ],
-            ),
-            label: '',
+            icon: const Icon(Icons.calendar_month),
+            backgroundColor: currentIndex == 1 ? defaultColor : null,
+            label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Column(
-              children: [
-                BottomBarIcon(
-                  icon: Icons.alarm_on,
-                  text: 'Focus',
-                  color: currentIndex == 2 ? defaultColor : null,
-                ),
-              ],
-            ),
-            label: '',
+            icon: const Icon(Icons.alarm_on),
+            backgroundColor: currentIndex == 2 ? defaultColor : null,
+            label: 'Focus',
           ),
           BottomNavigationBarItem(
-            icon: Column(
-              children: [
-                BottomBarIcon(
-                  icon: Icons.person,
-                  text: 'Person',
-                  color: currentIndex == 3 ? defaultColor : null,
-                ),
-              ],
-            ),
-            label: '',
+            icon: const Icon(Icons.person),
+            backgroundColor: currentIndex == 3 ? defaultColor : null,
+            label: 'Person',
           ),
         ],
         currentIndex: currentIndex,
         selectedItemColor: defaultColor,
-        onTap: (int index) {
-          setState(() {
-            currentIndex = index;
-          });
-          // Navigator.pushNamed(context, nav[currentIndex]);
-        },
+        onTap: onPressed,
       ),
     );
+  }
+
+  void onPressed(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+    Navigator.pushNamed(context, nav[currentIndex]);
   }
 }

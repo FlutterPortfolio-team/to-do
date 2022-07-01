@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:to_do/components/dialogs/button/full_button.dart';
 import 'package:to_do/components/profile/list_tile.dart';
 import 'package:to_do/components/profile/tile_title.dart';
+import 'package:to_do/helper/nav.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
+import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
 
 import '../../components/dialogs/change_name_dialog.dart';
 
@@ -46,6 +48,22 @@ class ProfileScreen extends StatelessWidget {
     }
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: BottomBarNavigator(cIndex: 3),
+         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 30.0),
+          child: FloatingActionButton(
+            onPressed: () => showModalBottomSheet(
+              isScrollControlled: true,
+                context: context,
+                builder: (context) => const AddTaskBottomSheet()),
+            backgroundColor: Colors.yellow,
+            child: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
