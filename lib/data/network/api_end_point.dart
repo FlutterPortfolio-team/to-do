@@ -1,10 +1,9 @@
-//TODO: iImplement the API end point here
+import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-
 class ApiEndpoint {
-  static const baseUrl ="https://";
+  static const baseUrl = "https://";
 
   Future post(String endPoint, Map<String, dynamic>? body) async {
     http.Response response;
@@ -13,6 +12,8 @@ class ApiEndpoint {
       response = await http.post(url, body: body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.body;
+      } else if (response.statusCode == 404) {
+        throw http.ClientException('URL you requested does not exist');
       } else if (response.statusCode == 401) {
         throw http.ClientException('Unauthorized');
       } else if (response.statusCode == 500) {
@@ -25,9 +26,11 @@ class ApiEndpoint {
     }
   }
 
+  void main() async {}
+
   Future get(
-      String endPoint,
-      ) async {
+    String endPoint,
+  ) async {
     http.Response response;
     try {
       var url = Uri.parse(baseUrl + endPoint);
@@ -96,12 +99,11 @@ class ApiEndpoint {
       } else if (response.statusCode == 500) {
         throw http.ClientException('Server error');
       } else {
+        print(response.statusCode);
         throw Exception('Oh darn! Something went wrong');
       }
     } catch (e) {
       throw Exception(e);
     }
   }
-
-
 }

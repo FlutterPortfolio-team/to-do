@@ -31,3 +31,7 @@ class AuthenticationRepository {
     return signUpResponse;
   }
 }
+
+abstract class AuthRepo {
+  Future<dynamic> signUpUser({required String username, String email, String password});
+}
