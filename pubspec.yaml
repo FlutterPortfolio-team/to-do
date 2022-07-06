@@ -41,6 +41,8 @@ dependencies:
   flutter_calendar_carousel: ^2.0.0
   wheel_chooser: ^1.0.0
   flutter_svg: ^1.0.3
+  http: ^0.13.4
+
   # dropdown_button: ^1.6.2
   cloud_firestore: ^3.1.5
   fluttertoast: ^8.0.9
