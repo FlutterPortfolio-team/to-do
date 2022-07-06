@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:to_do/data/app_exception.dart';
 import 'package:to_do/helper/routes.dart';
 import 'package:to_do/models/user.dart';
 

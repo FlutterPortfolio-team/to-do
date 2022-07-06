@@ -7,7 +7,7 @@ import 'package:to_do/view/onboarding/onboarding.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:to_do/helper/routes.dart';
-import 'package:to_do/view/task/task_screen.dart';
+// import 'package:to_do/view/task/task_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

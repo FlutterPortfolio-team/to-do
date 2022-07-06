@@ -24,32 +24,65 @@ Future<String> createTask({
   }
 }
 
-// void main() async {
-//   var request = http.Request('GET', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/'));
 
-//   http.StreamedResponse response = await request.send();
+void main() async {
+  var task = getTaskByUser(userId: 10);
+}
 
-//   if (response.statusCode == 200) {
-//     print(await response.stream.bytesToString());
-//   }
-//   else {
-//     print(response.reasonPhrase);
-//   }
+Future<http.StreamedResponse> getTaskByUser({required int userId}) async {
+  var request = http.Request('GET',
+      Uri.parse('https://todo22a.herokuapp.com/api/v1/task/user/$userId'));
 
-// }
+  http.StreamedResponse response = await request.send();
+  if (response.statusCode == 200) {
+    return response;
+  }
+  throw Exception('Bad connection');
+}
 
-// void main() async {
-//   var request = http.Request(
-//       'POST', Uri.parse('https://todo22a.herokuapp.com/api/v1/user/register'));
-//   request.body =
-//       '''{\r\n    \r\n    "username": "Adegbite",\r\n\t"email": "adegbite@gmail.com",\r\n\t"password": "adeola"\r\n    \r\n}''';
+Future<http.StreamedResponse> getTaskById(String id) async {
+  var request = http.Request(
+      'GET', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/$id'));
 
-//   http.StreamedResponse response = await request.send();
+  http.StreamedResponse response = await request.send();
 
-//   if (response.statusCode == 200) {
-//     print(await response.stream.bytesToString());
-//   } else {
-//     print(response.reasonPhrase);
-//   }
-//   print(response.statusCode.toString());
-// }
+  return response;
+}
+
+Future<http.StreamedResponse> getAllTask() async {
+  var request = http.Request(
+      'GET', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/'));
+
+  http.StreamedResponse response = await request.send();
+
+  return response;
+}
+
+Future<http.StreamedResponse> filterTask() async {
+  var request = http.Request('GET',
+      Uri.parse('https://todo22a.herokuapp.com/api/v1/task/filter/true'));
+
+  http.StreamedResponse response = await request.send();
+
+  return response;
+}
+
+Future<http.StreamedResponse> deleteTask() async {
+  var request = http.Request(
+      'DELETE', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/2'));
+
+  http.StreamedResponse response = await request.send();
+
+  return response;
+}
+
+Future<http.StreamedResponse> updateTask() async {
+  var request = http.Request(
+      'PUT', Uri.parse('https://todo22a.herokuapp.com/api/v1/task/edit/3'));
+  request.body =
+      '''{\r\n    \r\n   \r\n    "todo": "get a cold bbbbeer"\r\n     \r\n\t\r\n    \r\n}''';
+
+  http.StreamedResponse response = await request.send();
+
+  return response;
+}
