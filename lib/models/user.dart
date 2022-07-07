@@ -1,41 +1,54 @@
 import 'dart:convert';
 
-class AllUser {
-  final List<User> users;
-  AllUser({required this.users});
-  factory AllUser.fromJson(Map<String, dynamic> json) =>
-      AllUser(users: json['user']);
-}
+import 'package:to_do/view_model/user_view_model.dart';
+
+UserModel userModelFromJson(String str) => UserModel(user: userFromJson(str));
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
+// List<User> userListFromJson(String str) =>
+//     List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
+
+String userToJson(User data) => json.encode(data.toJson());
+
+// String userListToJson(List<User> data) =>
+//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class User {
-  final String userName;
-  final String email;
-  final String password;
   User({
-    required this.userName,
+    required this.id,
+    required this.username,
     required this.email,
     required this.password,
   });
 
-  factory User.fromJson(Map<String, String> json) => User(
-        userName: json['userName'] as String,
-        email: json['email'] as String,
-        password: json['password'] as String,
+  int? id;
+  String? username;
+  String? email;
+  String? password;
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        id: json["id"],
+        username: json["username"] == null ? null : json['username'],
+        email: json["email"],
+        password: json["password"],
       );
 
-  Map<String, String> toJson() => {
-        'userName': userName,
-        'email': email,
-        'password': password,
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "username": username,
+        "email": email,
+        "password": password,
       };
 }
 
-User userFromJson(String str) {
-  final jsonData = json.decode(str);
-  return User.fromJson(jsonData);
-}
+class UserList {
+  final List<User> users;
+  UserList({required this.users});
 
-String userToJson(User user) {
-  final data = user.toJson();
-  return jsonEncode(data);
+  factory UserList.fromJson(List<dynamic> json) {
+    List<User> users = [];
+    users = json.map((e) => User.fromJson(e)).toList();
+
+    return UserList(users: users);
+  }
 }

@@ -1,68 +1,38 @@
+
 import 'dart:convert';
 
+List<Task> taskFromJson(String str) => List<Task>.from(json.decode(str).map((x) => Task.fromJson(x)));
+
+String taskToJson(List<Task> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Task {
-  final int userId;
-  final String title;
-  final String description;
-  final String taskTime;
-  final DateTime taskDate;
-  Task({
-    required this.userId,
-    required this.title,
-    required this.description,
-    required this.taskTime,
-    required this.taskDate,
-  });
+    Task({
+        required this.id,
+        required this.userId,
+        required this.todo,
+        required this.status,
+        required this.createdOn,
+    });
 
-  Task copy({
-    int? userId,
-    String? title,
-    String? description,
-    String? taskTime,
-    DateTime? taskDate,
-  }) =>
-      Task(
-        userId: userId as int,
-        title: title as String,
-        description: description as String,
-        taskTime: taskTime as String,
-        taskDate: taskDate as DateTime,
-      );
+    int id;
+    int userId;
+    String todo;
+    int status;
+    DateTime createdOn;
 
-  factory Task.fromJson(Map<String, dynamic> json) {
-    return Task(
-      userId: json[TaskFields.userId],
-      title: json[TaskFields.title],
-      description: json[TaskFields.description],
-      taskTime: json[TaskFields.taskTime],
-      taskDate: DateTime.parse(json[TaskFields.taskDate] as String),
+    factory Task.fromJson(Map<String, dynamic> json) => Task(
+        id: json["id"],
+        userId: json["user_id"],
+        todo: json["todo"],
+        status: json["status"],
+        createdOn: DateTime.parse(json["created_on"]),
     );
-  }
 
-  Map<String, dynamic> toJson() => {
-        TaskFields.userId: userId,
-        TaskFields.title: title,
-        TaskFields.description: description,
-        TaskFields.taskTime: taskTime,
-        TaskFields.taskDate: taskDate.toIso8601String(),
-      };
-}
-
-Task taskFromJson(String str) => Task.fromJson(jsonDecode(str));
-
-String taskToJson(Task data) => jsonEncode(data.toJson());
-
-class TaskFields {
-  static const String userId = 'user_id';
-  static const String title = 'title';
-  static const String description = 'description';
-  static const String taskTime = 'taskTime';
-  static const String taskDate = 'taskDate';
-  static final List<String> values = [
-    userId,
-    title,
-    description,
-    taskTime,
-    taskDate,
-  ];
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "user_id": userId,
+        "todo": todo,
+        "status": status,
+        "created_on": createdOn.toIso8601String(),
+    };
 }
