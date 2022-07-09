@@ -16,12 +16,12 @@ class _IndexScreenState extends State<IndexScreen> {
   @override
   Widget build(BuildContext context) {
     const pp = 'assets/profilepic.png';
-    // const boy = 'assets/rafki.png';
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          leading: Container(),
           title: const Text(
             'Index',
             style: TextStyle(color: Colors.black),

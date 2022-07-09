@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +9,7 @@ import 'package:to_do/data/service/authentication_service.dart';
 import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
+import 'package:to_do/view_model/user_view_model.dart';
 
 import '../../res/regex.dart';
 import '../widgets/input_field.dart';
@@ -26,38 +27,18 @@ class _LoginScreenState extends State<LoginScreen> {
   FocusNode focusNode = FocusNode();
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final AuthenticationService _auth =
-      AuthenticationService(FirebaseAuth.instance);
+    final UserViewModel _userAuth = UserViewModel();
 
   @override
   void setState(fn) {
     if (mounted) super.setState(fn);
   }
-
-  Future loginUser() async {
-    // Future.delayed(Duration(milliseconds: 5));
-    print('--------------- enter home page-------------');
-    await signInUser(
+    Future loginUser() async {
+    await _userAuth.signIn(
         email: userNameController.text.trim(),
         password: passwordController.text.trim(),
         context: context);
   }
-// Future loginUser() async {
-//   // Future.delayed(Duration(milliseconds: 5));
-//   print('--------------- enter home page-------------');
-//   await _auth.signIn(
-//     email: userNameController.text.trim(),
-//     password: passwordController.text.trim(),
-//     context: context
-//     );
-// }
-
-  //  Future loginUser() async {
-  //   print('///////--- e reach overlay----///');
-  //   final overlay = LoadingOverlay.of(context);
-  //   return await overlay.during(preloginUser());
-  // }
-
   @override
   void dispose() {
     userNameController.dispose();

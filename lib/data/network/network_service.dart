@@ -47,7 +47,7 @@ class NetworApiService extends BaseApiService {
           HttpHeaders.contentTypeHeader: '',
           HttpHeaders.authorizationHeader: '',
         },
-        body: taskToJson(task),
+        // body: taskToJson(task),
       );
       responseJson = returnResponse(response);
     } on SocketException {

@@ -5,14 +5,32 @@ import 'package:to_do/components/dialogs/button/full_button.dart';
 import 'package:to_do/components/profile/list_tile.dart';
 import 'package:to_do/components/profile/tile_title.dart';
 import 'package:to_do/helper/nav.dart';
+import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
 import 'package:to_do/view_model/user_view_model.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
 import '../../components/dialogs/change_name_dialog.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String username = '';
+  @override
+  void initState() {
+    super.initState();
+    getUsername(context);
+  }
+
+  getUsername(BuildContext context) async {
+    username =
+        await Provider.of<UserViewModel>(context, listen: false).username;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         body: SingleChildScrollView(
-          child: Consumer<UserModel>(
+          child: Consumer<UserViewModel>(
             builder: ((context, value, child) {
               return Column(
                 children: [
@@ -101,9 +119,9 @@ class ProfileScreen extends StatelessWidget {
                         SizedBox(
                           height: sizer(false, 10.0, context),
                         ),
-                        const Text(
-                          'Martha Hays',
-                          style: TextStyle(
+                        Text(
+                          username,
+                          style: const TextStyle(
                               fontSize: 20.0,
                               color: GenColors.black,
                               height: 1.5),
@@ -186,7 +204,9 @@ class ProfileScreen extends StatelessWidget {
                           height: sizer(false, 16.0, context),
                         ),
                         ProfileTile(
-                            tileFunction: () {},
+                            tileFunction: () {
+                              Navigator.pushNamed(context, Routes.loginRoute);
+                            },
                             tailColor: Colors.transparent,
                             icon: 'assets/icons/logout.png',
                             textColor: Colors.red,

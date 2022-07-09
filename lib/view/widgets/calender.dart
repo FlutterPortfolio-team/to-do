@@ -227,16 +227,18 @@ class _CalendarState extends State<Calendar> {
               AppButton(
                 text: 'Choose Time',
                 useSecondColor: true,
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => IndexScreen(
-                  showBottomBar: false,
-                  body: TaskWidget(
-                    minute: widget.minute,
-                    hour: widget.hour,
-                    description: widget.description,
-                    taskTitle: widget.tasktitle,
-                    taskDate: taskDate,
-                  ),
-                ),))
+                onPressed: () => Navigator.pop(context),
+                // onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => IndexScreen(
+                //   showBottomBar: false,
+                //   body: TaskWidget(
+                //     minute: widget.minute,
+                //     hour: widget.hour,
+                //     description: widget.description,
+                //     taskTitle: widget.tasktitle,
+                //     taskDate: taskDate,
+                //   ),
+                // ),),
+                // )
               ),
             ],
           ),

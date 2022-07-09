@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do/models/to_do.dart';
+import 'package:to_do/res/app_context_extension.dart';
+import 'package:to_do/view/home/index_screen.dart';
+import 'package:to_do/view/widgets/display_task_tile.dart';
 import 'package:to_do/view/widgets/pop_up_container.dart';
 import 'package:to_do/view/widgets/small_container.dart';
+import 'package:to_do/view/widgets/task_widget.dart';
+import 'package:to_do/view_model/to_do_vm.dart';
 import 'package:wheel_chooser/wheel_chooser.dart';
 
 class ChooseTimeWidget extends StatelessWidget {
@@ -15,7 +22,9 @@ class ChooseTimeWidget extends StatelessWidget {
     required this.onMinutesValueChanged,
     required this.onHourValueChanged,
     required this.onTimeValueChanged,
-    this.onSaved, this.sHour, this.sMin,
+    this.onSaved,
+    this.sHour,
+    this.sMin,
   }) : super(key: key);
   final minute = [
     '01',
@@ -99,14 +108,14 @@ class ChooseTimeWidget extends StatelessWidget {
     var hourWheel = WheelChooser(
       onValueChanged: onHourValueChanged,
       datas: hour,
-      startPosition: sHour== null ? 5 : sHour!+1,
+      startPosition: sHour == null ? 5 : sHour! + 1,
       selectTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
       unSelectTextStyle: const TextStyle(fontSize: 20, color: Colors.grey),
     );
     var minutesWheel = WheelChooser(
       onValueChanged: onMinutesValueChanged,
       datas: minute,
-      startPosition: sMin == null ?  29 : sMin! +1,
+      startPosition: sMin == null ? 29 : sMin! + 1,
       selectTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
       unSelectTextStyle: const TextStyle(fontSize: 20, color: Colors.grey),
     );
@@ -139,5 +148,92 @@ class ChooseTimeWidget extends StatelessWidget {
           ),
         ),
         showDivider: true);
+  }
+}
+
+class ConfirmDeleteWidget extends StatefulWidget {
+  final String todo;
+  final int taskId;
+  const ConfirmDeleteWidget(
+      {Key? key, required this.todo, required this.taskId})
+      : super(key: key);
+
+  @override
+  State<ConfirmDeleteWidget> createState() => _ConfirmDeleteWidgetState();
+}
+
+class _ConfirmDeleteWidgetState extends State<ConfirmDeleteWidget> {
+  String data = '';
+  List<Task> tasks = [];
+  getTodos() async {
+    final taskVm = Provider.of<TaskViewModel>(context, listen: false);
+    taskVm.getTaskByUser();
+    data = await taskVm.tasksOfUser;
+    tasks = Task.decode(data);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PopUpContainer(
+      title: 'Delete Task',
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Are you sure you want to delete this task?',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                  color: context.resources.color.colorWhite,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20),
+            ),
+            Text(
+              'Task Title: ${widget.todo}',
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                  color: context.resources.color.colorWhite,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20),
+            ),
+          ],
+        ),
+      ),
+      showDivider: true,
+      setTodefault: true,
+      button2Title: 'Delete',
+      button1Pressed: () => Navigator.pop(context),
+      button2Pressed: () async {
+        final taskVm = Provider.of<TaskViewModel>(context, listen: false);
+        await taskVm.deleteTask(widget.taskId);
+        await taskVm.getTaskByUser();
+        getTodos();
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => IndexScreen(
+              showBottomBar: true,
+              body: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: ListView.builder(
+                    itemCount: tasks.length,
+                    itemBuilder: (context, index) {
+                      final taskIndex = tasks[index];
+                      return TaskTile(
+                        description: 'description',
+                        taskDate: 'taskDate',
+                        todo: taskIndex.todo!,
+                        hour: hour,
+                        minute: '30',
+                        taskId: taskIndex.id!,
+                      );
+                    }),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

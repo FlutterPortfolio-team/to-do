@@ -8,6 +8,7 @@ import 'package:to_do/view/widgets/choose_time_widget.dart';
 
 class TaskScreen extends StatefulWidget {
   final String title, description, hour, minute, taskDate;
+  final int? taskId;
   const TaskScreen({
     Key? key,
     required this.title,
@@ -15,6 +16,7 @@ class TaskScreen extends StatefulWidget {
     required this.taskDate,
     required this.hour,
     required this.minute,
+    this.taskId,
   }) : super(key: key);
 
   @override
@@ -69,12 +71,15 @@ class _TaskScreenState extends State<TaskScreen> {
                       width: 48,
                       color: const Color(0xFF0E2045),
                       child: GestureDetector(
-                        onTap: () => displayDialog(
-                            context,
-                            EditTaskWidget(
-                              description: widget.description,
-                              tatskTitle: widget.title,
-                            )),
+                        onTap: () async{
+                          await displayDialog(
+                              context,
+                              EditTaskWidget(
+                                taskId: widget.taskId!,
+                                description: widget.description,
+                                tatskTitle: widget.title,
+                              ));
+                        },
                         child: const Icon(
                           Icons.edit_sharp,
                           color: Colors.white,
@@ -117,11 +122,14 @@ class _TaskScreenState extends State<TaskScreen> {
                   const SizedBox(height: 20),
                   CustomListTile(
                     leading: GestureDetector(
-                        onTap: () => Calendar(
-                              minute: widget.minute,
-                              hour: widget.hour,
-                              description: widget.description,
-                              tasktitle: widget.title,
+                        onTap: () => displayDialog(
+                              context,
+                              Calendar(
+                                minute: widget.minute,
+                                hour: widget.hour,
+                                description: widget.description,
+                                tasktitle: widget.title,
+                              ),
                             ),
                         child: const Icon(Icons.calendar_month_outlined)),
                     title: const Text(
@@ -133,7 +141,12 @@ class _TaskScreenState extends State<TaskScreen> {
                   const SizedBox(height: 40),
                   CustomListTile(
                     leading: GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        displayDialog(
+                            context,
+                            ConfirmDeleteWidget(
+                                taskId: widget.taskId!, todo: widget.title));
+                      },
                       child: const Icon(
                         Icons.delete_outline_rounded,
                         color: Colors.red,

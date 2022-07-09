@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do/view/widgets/add_task_botton_sheet.dart';
+import 'package:to_do/view_model/to_do_vm.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +13,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final task = Provider.of<TaskViewModel>(context, listen: false);
+    // task.createTask('get ur hands reneat');
+    task.getTaskByUser();
     const pp = 'assets/profilepic.png';
     const boy = 'assets/rafki.png';
     return SafeArea(
@@ -59,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(bottom: 30.0),
           child: FloatingActionButton(
             onPressed: () => showModalBottomSheet(
-              isScrollControlled: true,
+                isScrollControlled: true,
                 context: context,
                 builder: (context) => const AddTaskBottomSheet()),
             backgroundColor: Colors.yellow,

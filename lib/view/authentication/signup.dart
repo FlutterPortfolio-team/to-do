@@ -8,6 +8,7 @@ import 'package:to_do/data/network/user_api.dart';
 import 'package:to_do/helper/routes.dart';
 import 'package:to_do/res/colors/general_color.dart';
 import 'package:to_do/res/size_calculator.dart';
+import 'package:to_do/view_model/user_view_model.dart';
 
 import '../../data/service/authentication_service.dart';
 import '../../res/regex.dart';
@@ -28,8 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController newPasswordEditingController = TextEditingController();
   TextEditingController confrimPasswordEditingController =
       TextEditingController();
-  final AuthenticationService _auth =
-      AuthenticationService(FirebaseAuth.instance);
+  final UserViewModel _userAuth = UserViewModel();
 
   String? _email;
   bool obscurePassword = true, obscureConfrimPassword = true;
@@ -51,39 +51,20 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future signUpUser() async {
-    // Future.delayed(Duration(milliseconds: 5));
-    print('--------------- enter home page-------------');
     if (newPasswordEditingController.text.trim() !=
         confrimPasswordEditingController.text.trim()) {
       showCustomToast();
       newPasswordEditingController.clear();
       confrimPasswordEditingController.clear();
     } else {
-      await createUser(
-        userName: usernameEditingController.text.trim(),
+      await _userAuth.signUp(
+        username: usernameEditingController.text.trim(),
         email: emailEditingController.text.trim(),
         password: newPasswordEditingController.text.trim(),
         context: context,
       );
     }
   }
-
-  // Future signUpUser() async {
-  //   // Future.delayed(Duration(milliseconds: 5));
-  //   print('--------------- enter home page-------------');
-  //   if (newPasswordEditingController.text.trim() !=
-  //       confrimPasswordEditingController.text.trim()) {
-  //     showCustomToast();
-  //     newPasswordEditingController.clear();
-  //     confrimPasswordEditingController.clear();
-  //   } else {
-  //     await _auth.signUp(
-  //         email: emailEditingController.text.trim(),
-  //         password: newPasswordEditingController.text.trim(),
-  //         context: context);
-  //   }
-  // }
-
   @override
   void dispose() {
     emailEditingController.dispose();

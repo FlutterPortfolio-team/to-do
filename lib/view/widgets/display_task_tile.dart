@@ -73,6 +73,80 @@ class _DisplayTaskTileState extends State<DisplayTaskTile> {
   }
 }
 
+class TaskTile extends StatefulWidget {
+  final String description, taskDate, todo, hour, minute;
+  final int taskId;
+
+  const TaskTile({
+    Key? key,
+    required this.description,
+    required this.taskDate,
+    required this.todo,
+    required this.hour,
+    required this.minute,
+    required this.taskId,
+  }) : super(key: key);
+
+  @override
+  State<TaskTile> createState() => _TaskTileState();
+}
+
+class _TaskTileState extends State<TaskTile> {
+  bool value = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (_) => TaskScreen(
+                title: widget.todo,
+                taskId: widget.taskId,
+                description: widget.description,
+                hour: widget.hour,
+                minute: widget.minute,
+                taskDate: widget.taskDate,
+              ))),
+      child: Container(
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        height: 72,
+        decoration: BoxDecoration(
+          color: context.resources.color.buttonBlue,
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
+        ),
+        child: Row(
+          children: [
+            Checkbox(
+                shape: const CircleBorder(),
+                checkColor: context.resources.color.buttonBlue,
+                fillColor: MaterialStateProperty.all(
+                    context.resources.color.buttonGrey),
+                value: value,
+                onChanged: (value) {
+                  setState(() {
+                    this.value = value!;
+                  });
+                }),
+            const SizedBox(height: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  widget.todo,
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
+                Text(
+                  'Todat At ${widget.hour};${widget.minute}',
+                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 
 //  ListTile(

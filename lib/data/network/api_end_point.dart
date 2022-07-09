@@ -66,6 +66,24 @@ class ApiEndpoint {
     }
   }
 
+ Future customDelete(String endPoint) async {
+    http.Response response;
+    try {
+      var url = Uri.parse(baseUrl + endPoint);
+      response = await http.delete(url);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return response.body;
+      } else if (response.statusCode == 401) {
+        throw http.ClientException('Unauthorized');
+      } else if (response.statusCode == 500) {
+        throw http.ClientException('Server error');
+      } else {
+        throw Exception('Oh darn! Something went wrong');
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
   Future patch(String endPoint, Map<String, dynamic>? body) async {
     http.Response response;
     try {

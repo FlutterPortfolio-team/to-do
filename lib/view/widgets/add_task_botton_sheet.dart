@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do/models/to_do.dart';
 import 'package:to_do/utils/display_dialog.dart';
 import 'package:to_do/utils/show_dialog.dart';
 import 'package:to_do/view/home/index_screen.dart';
 import 'package:to_do/view/widgets/app_text_field.dart';
 import 'package:to_do/view/widgets/calender.dart';
 import 'package:to_do/view/widgets/choose_time_widget.dart';
+import 'package:to_do/view/widgets/display_task_tile.dart';
 import 'package:to_do/view/widgets/pop_up_container.dart';
 import 'package:to_do/view/widgets/task_widget.dart';
+import 'package:to_do/view_model/to_do_vm.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
   const AddTaskBottomSheet({Key? key}) : super(key: key);
@@ -16,20 +20,24 @@ class AddTaskBottomSheet extends StatefulWidget {
 }
 
 class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
-  TextEditingController tatskTitle = TextEditingController();
+  TextEditingController taskTitle = TextEditingController();
   TextEditingController description = TextEditingController();
   String hour = '';
   String minute = '';
   DateTime currentTime = DateTime.now();
+
+  String data = '';
+  List<Task> tasks = [];
+  getTodos() async {
+    final taskVm = Provider.of<TaskViewModel>(context, listen: false);
+    data = await taskVm.tasksOfUser;
+    tasks = Task.decode(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height / 2.5;
-
-    // DateTime? currentDate = calendar.selectedDaytime;
-    // debugPrint(currentDate.toString());
-
-    // ignore: unused_local_variable
-    TaskWidget taskWidget;
+    getTodos();
     return Scaffold(
       body: Align(
         alignment: Alignment.bottomCenter,
@@ -50,7 +58,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     children: [
                       AppTextField(
                         labelText: 'Task Title',
-                        controller: tatskTitle,
+                        controller: taskTitle,
                       ),
                       const SizedBox(height: 15),
                       AppTextField(
@@ -105,32 +113,17 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                                 GestureDetector(
                                   onTap: () {
                                     if ((minute != '' && hour != '')) {
-                                      if (tatskTitle.text.trim() != '' &&
+                                      if (taskTitle.text.trim() != '' &&
                                           description.text.trim() != '') {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => IndexScreen(
-                                              showBottomBar: false,
-                                              body: taskWidget = TaskWidget(
-                                                minute: minute,
-                                                hour: hour,
-                                                description:
-                                                    description.text.trim(),
-                                                taskTitle:
-                                                    tatskTitle.text.trim(), taskDate: '',
-                                              ),
-                                            ),
-                                          ),
-                                        );
                                         displayDialog(
                                           context,
-                                        Calendar(
-                                          minute: minute,
-                                          hour: hour,
-                                          description: description.text.trim(),
-                                          tasktitle: tatskTitle.text.trim(),
-                                        ),
+                                          Calendar(
+                                            minute: minute,
+                                            hour: hour,
+                                            description:
+                                                description.text.trim(),
+                                            tasktitle: taskTitle.text.trim(),
+                                          ),
                                         );
                                       } else {
                                         showMyDialog(
@@ -154,20 +147,39 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                           ),
                         ),
                         GestureDetector(
-                            onTap: () {
-                              if (tatskTitle.text.trim() != '' &&
+                            onTap: () async {
+                              if (taskTitle.text.trim() != '' &&
                                   description.text.trim() != '') {
                                 if ((minute != '' && hour != '')) {
+                                  final taskVm = Provider.of<TaskViewModel>(
+                                      context,
+                                      listen: false);
+                                  await taskVm
+                                      .createTask(taskTitle.text.trim());
+                                  await taskVm.getTaskByUser();
+                                  getTodos();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => IndexScreen(
-                                        showBottomBar: false,
-                                        body: taskWidget = TaskWidget(
-                                          minute: minute,
-                                          hour: hour,
-                                          description: description.text.trim(),
-                                          taskTitle: tatskTitle.text.trim(), taskDate: '',
+                                        showBottomBar: true,
+                                        body: SizedBox(
+                                          height: MediaQuery.of(context)
+                                              .size
+                                              .height,
+                                          child: ListView.builder(
+                                              itemCount: tasks.length,
+                                              itemBuilder: (context, index) {
+                                                final taskIndex = tasks[index];
+                                                return TaskTile(
+                                                  description: 'description',
+                                                  taskDate: 'taskDate',
+                                                  todo: taskIndex.todo!,
+                                                  hour: hour,
+                                                  minute: minute,
+                                                  taskId: taskIndex.id!,
+                                                );
+                                              }),
                                         ),
                                       ),
                                     ),
@@ -195,12 +207,4 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
       ),
     );
   }
-
-  // void onDayPressed(DateTime date, List<Event> events) {
-  //   setState(() {
-  //     currentTime = date;
-  //     debugPrint(currentTime.toString());
-  //     // selectedDaytime = _currentDate;
-  //   });
-  // }
 }
